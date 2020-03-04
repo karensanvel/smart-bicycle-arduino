@@ -1,0 +1,150 @@
+* { font-family:arial; }
+                    /*Estilos para el layout que estara fijo*/
+body{
+    background: rgb(226, 223, 223);
+    height: 300;
+}
+#header{
+    text-align: center;
+    font-size: 22pt;
+    width: 100%;
+    color:rgb(124, 122, 122);
+}
+#logo{
+    display: flex;
+    justify-content: center;align-content: center;align-items: center;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 100px;
+}
+#logo img{
+    width: 150px;
+    height: 150px;
+}
+
+.navBar{
+    background: rgb(20, 188, 230);
+    float: left;
+    height: 660px;
+    width: 15%;
+    margin-left: 0;margin-top: 0;
+}
+#nav{
+    position: relative;
+    width: 100%;
+    margin: 20px;
+    display: block;
+
+}
+#nav ul{
+    margin:10px;
+    padding: 0px;
+}
+#nav ul li{
+    list-style-type: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 15px;
+    font-size: 12pt;
+    color: white;
+}
+#nav ul li a{
+    display: flex;justify-content: start;align-items: center;
+}
+#nav ul li a:link, nav ul li a:visited{
+    text-decoration: none;
+    color: white;
+}
+#nav ul li a:hover{
+    color: blue;
+}
+
+
+                              /*Estilo para el dashboard principal | Index*/
+#divgps{
+    margin-top: 55px;
+    width: 50%;
+    height: 530px;
+}
+#divtemperatura{
+    margin-top: 55px;
+    width: 30%;
+    height: 170px;
+}
+#divdistancia{
+    margin-top: 25px;
+    width: 30%;
+    height: 335px;
+}
+#divdistancia, #divgps, #divtemperatura{
+    float: left;
+    margin-left: 25px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 6px 6px 8px 0px #818181;
+}
+.titleDash{
+    height: 35px;
+    color: gray;
+    font-size: 14pt;
+    display: flex;
+    justify-content: center;align-items: center;;align-content: center;
+}
+/* G P S*/
+#divgps .titleDash{
+    height: 70px;
+    color: gray;
+    background: greenyellow;
+    font-size: 14pt;
+    display: flex;
+    justify-content: center;align-items: center;align-content: center;
+}
+#mapa{
+    margin-top: 20px; margin-left: 18px;
+    width: 94%;
+    height: 425px;
+    background: pink;
+}
+/* div de temperatura y humedad*/
+#temp{
+    text-align: center;
+    float: left;
+    width: 50%;
+    height: 135px;
+}
+#moist{
+    text-align: center;
+    float: right;
+    width: 50%;
+    height: 135px;
+}
+/* div de la proximidad*/
+#images{
+    float: left;
+    height: 300px;
+    width: 50%;
+}
+#dib1{
+    background: salmon;
+    display: flex;
+    justify-content: center;align-content: center;align-items: flex-end;
+    width: 100%;
+    height: 125px;
+}
+#dib2{
+    background: violet;
+    display: flex;
+    justify-content: center;align-content: center;align-items:flex-start;
+    width: 100%;
+    height: 175px;
+}
+
+#infoProx{
+    display: flex;
+    float: right;
+    background: cadetblue;
+    height: 300px;
+    width: 50%;
+}
