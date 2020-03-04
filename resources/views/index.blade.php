@@ -8,7 +8,9 @@
     <div id="divgps">
         <div class="titleDash">Route traveled</div>
         <div id="datosMapa"></div>
-        <div id="mapa">Este es el div para el mapa</div>
+        <div id="mapa">
+            <example-component></example-component>
+        </div>
     </div>
     <div id="divtemperatura">
         <div class="titleDash">Temperature and Moisture</div>
