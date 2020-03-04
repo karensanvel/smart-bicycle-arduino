@@ -10,7 +10,6 @@
     @yield('css')
 </head>
 <body>
-    <div id="app" class="content"><!--La equita id debe ser app, como hemos visto en app.js-->
         <nav class="navBar">
             <div id="logo"><img src="/images/logo3.png" alt="logo"></div>
             <nav id="nav">
@@ -23,8 +22,6 @@
         </nav>   
         <div id="header">Bicycle route information Dashboard</div>
         @yield('content')
-    </div>
     @yield('js')
-    <script src="{{asset('js/app.js')}}"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->
 </body>
 </html>
