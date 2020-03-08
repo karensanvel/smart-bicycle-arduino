@@ -2,7 +2,6 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/stylesheet.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
 @endsection
 
 @section('content')
@@ -10,7 +9,7 @@
         <div class="titleDash">Route traveled</div>
         <div id="datosMapa"></div>
         <div id="app">
-            <example-component></example-component>
+            <map-component></map-component>
         </div>
     </div>
     <div id="divtemperatura">
@@ -29,7 +28,7 @@
 @endsection
 @section('js')
 <script src="js/app.js"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->   
-<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<!-- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script> -->
 @endsection
 
 
