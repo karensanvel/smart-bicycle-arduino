@@ -17,11 +17,20 @@ class RedirectIfAuthenticated
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+    { 
+        $guard='web';
+        if (Auth::guard($guard)->check()) { //usuario autecticado actualmente
+            return redirect()->route('user.index');
         }
-
         return $next($request);
+        //si es un invitado, negar las peticiones de ajax, si no es ajax, redireccionar al login
+       /* if (Auth::guard($guard)->guest()) {
+            if($request->ajax()||$request->wantsJson()){
+                return response('Unauthorized', 401);
+            }else{
+                return redirect()->guest('login');
+            }
+        }
+        return $next($request);*/
     }
 }

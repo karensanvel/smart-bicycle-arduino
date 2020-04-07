@@ -8,85 +8,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SmartBicycle | </title>
-
-    <!-- Bootstrap -->
-    <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="/vendors/animate.css/animate.min.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="/build/css/custom.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <link rel="stylesheet" href="/css/login.css">
   </head>
-
-  <body class="login">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
-
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form role="form" method="POST" action="{{ route('admin.login.submit') }}">
-                        {{ csrf_field() }}
-              <h1>Iniciar sesión</h1>
-                @if(session()->has('error'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('error') }}
-                    </div>
-                @endif
-                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                    <div>
-                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
-
-                        @if ($errors->has('username'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <div>
-                        <input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" required>
-
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-              <div class="row">
-                <button class="btn btn-default submit" type="submit">Login</button>
-                <div class="col-md-6 checkbox">
-                    <label>
-                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordar sesión
-                    </label>
-                </div>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class=""></i> SmartMart</h1>
-                  <p>&copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> All Rights Reserved. Powered by <a href="https://servindtec.com">Servindtec</a></p>
-                </div>
-              </div>
-            </form>
-          </section>
+  <body>
+      <header>
+          <div><img src="/images/logo.png">SmartBicycle</div>
+      </header>
+      <div id="big">
+        <div id="text">
+            <div id="slogan">
+                SmartBicycle, por la seguridad del ciclista
+            </div>
+            <div id="mensaje">
+                "Buscamos brindar la seguridad del ciclista a partir de un producto conformado por tecnología para la prevención de accidentes” <br/><br/><br/>
+                 Team SmartBicycle
+            </div>
         </div>
-      </div>
-    </div>
+        <div id="loginSection">
+            <div id="login">
+                <h3>Login here</h3>
+                <form method="POST" action="{{ route('user.login.submit') }}">
+                    {{ csrf_field() }}
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="login-input" name="username" value="{{ old('username') }}" placeholder="Enter username" required autofocus>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="login-input" name="password" value="{{ old('password') }}" placeholder="Enter password" required autofocus>
+                    <input type="submit" value="Log in" id="submit">
+                    <a id="cambio"  href="{{ route('user.register') }}">Create a new account</a>
+                </form>
+            </div> 
+        </div>
+      </div>   
   </body>
 </html>
+
+<script type="text/javascript">
+    //  $(document).ready(function() {
+    //     $('#submit').on('click', function () {
+    //         console.log('has dado clic al submit')
+    //     });
+    //  });
+</script>
