@@ -1,5 +1,5 @@
 * { font-family:arial; }
-                    /*Estilos para el layout que estara fijo*/
+         /*ESTILOS PARA LAYOUT QUE ES FIJO (NAVBAR)*/
 body{
     background: rgb(226, 223, 223);
 }
@@ -14,18 +14,38 @@ body{
     justify-content: center;align-content: center;align-items: center;
     width: 100%;
     height: 150px;
-    background: hotpink;
+    background: rgb(20, 188, 230);
 }
 #logo img{
     width: 150px;
     height: 150px;
 }
-#user{
-    display: flex;
-    justify-content: center;align-content: center;align-items: center;
+#user{ 
+    width: 100%;
+    color: #ecf6ec;
+    height: 110px;
+    margin-bottom: 70px; 
+    background: rgb(20, 188, 230);
+}
+#profile_info{
     width: 100%;
     height: 150px;
-    margin-bottom: 50px; background: green;
+}
+#profile_info div{
+    height: 19px;
+    width: 100%;
+}
+#user h3, h5{ margin-left: 35px; font-family: sans-serif;}
+#user h5{ color: rgb(255, 255, 255);}
+#user div i{
+    float: left;
+    color: white;
+    margin-left: 5px;
+}
+#user h4{ 
+    text-align: center; 
+    font-family: sans-serif; 
+    font-size: 12pt;
 }
 .navBar{
     background: rgb(20, 188, 230);
@@ -35,10 +55,9 @@ body{
     margin-left: 0;margin-top: 0;
 }
 #nav{
-    position: relative; background:grey;
+    position: relative;
     width: 100%;
     display: block;
-
 }
 #nav ul{
     margin:10px;
@@ -51,22 +70,19 @@ body{
     align-items: center;
     flex-wrap: nowrap;
     margin-bottom: 15px;
-    font-size: 12pt;
+    font-size: 12pt; 
     color: white;
 }
-/* #nav ul li a{
-    display: flex;justify-content: start;align-items: center;
-} */
-#nav ul li a:link, nav ul li a:visited{
-    text-decoration: none;
-    color: white;
-}
-#nav ul li a:hover{
-    color: blue;
-}
+#nav ul li a:visited{color: blue;}
+#nav ul li a:link{ text-decoration: none; color: white; }
+#nav ul li a:hover{  color: blue;}
+li i{margin-right: 30px;}
+.fa-line-chart{ margin-right: 20px; }
+.fa-sign-out{margin-right: 25px;}
 
 
-                              /*Estilo para el dashboard principal | Index*/
+
+         /*ESTILO DEL DASHBOARD PRINCIPAL | INDEX*/
 #divgps{
     margin-top: 55px;
     width: 50%;
@@ -124,6 +140,21 @@ body{
     width: 50%;
     height: 135px;
 }
+#indicador{
+    width: 100%;
+    height:35px ;
+    background: white;
+    color: rgb(158, 156, 156);
+    font-size: 11pt;
+}
+#data{
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    color: blue;
+    font-size: 28pt; font-weight: bold;
+    display: flex;justify-content: center;align-items: center;
+}
 /* div de la proximidad*/
 #images{
     float: left;
@@ -144,7 +175,6 @@ body{
     width: 100%;
     height: 175px;
 }
-
 #infoProx{
     display: flex;
     float: right;

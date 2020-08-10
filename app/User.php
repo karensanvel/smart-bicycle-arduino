@@ -37,4 +37,9 @@ class User extends Authenticatable
     public function numero(){
         return $this->belongsTo(NumeroSerie::class, 'idNumero');
     }
+    public function getNumber($id)
+    {
+        $numero = NumeroSerie::where('id', $id)->get();
+        return $numero;
+    }
 }

@@ -60,10 +60,10 @@
       </div>   
   </body>
 </html>
+
 <script type="text/javascript">
     $(document).ready(function() {
         var numser;
-
         $('#serialnumber').on('input', function(){
             var numero = $('#serialnumber').val();
             if(numero.length==10){

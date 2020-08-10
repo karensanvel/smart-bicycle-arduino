@@ -14,8 +14,14 @@
     </div>
     <div id="divtemperatura">
         <div class="titleDash">Temperature and Moisture</div>
-        <div id="temp">temperature</div>
-        <div id="moist">Humedity</div>
+        <div id="temp">
+            <div id="data">29°</div>
+            <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
+        </div>
+        <div id="moist">
+            <div id="data">67%</div>
+            <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
+        </div>
     </div>
     <div id="divdistancia">
         <div class="titleDash">Proximity</div>

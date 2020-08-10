@@ -48,11 +48,3 @@
       </div>   
   </body>
 </html>
-
-<script type="text/javascript">
-    //  $(document).ready(function() {
-    //     $('#submit').on('click', function () {
-    //         console.log('has dado clic al submit')
-    //     });
-    //  });
-</script>

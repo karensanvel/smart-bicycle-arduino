@@ -59,12 +59,9 @@ class LoginController extends Controller
         // if successful, then redirect to their intended location
         return redirect()->intended(route('user.index'));
       }
-      //return response()->json(['input' => $cantidad, "mensaje" => "La cantidad en el inventario es menor a la que solicitas"], 401);
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('username', 'remember'))->with('error', '*Login failure, please check your username and password');
-    
     }
-
     public function logout()
     {
         Auth::guard('web')->logout();
