@@ -8,8 +8,8 @@
     <div id="divgps">
         <div class="titleDash">Route traveled</div>
         <div id="datosMapa"></div>
-        <div id="mapa">
-            <example-component></example-component>
+        <div id="app">
+            <map-component></map-component>
         </div>
     </div>
     <div id="divtemperatura">
@@ -33,7 +33,8 @@
     </div>
 @endsection
 @section('js')
-<script src="{{asset('js/app.js')}}"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->   
+<script src="js/app.js"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->   
+<!-- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script> -->
 @endsection
 
 
