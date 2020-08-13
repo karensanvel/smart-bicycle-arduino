@@ -39,14 +39,20 @@
                     <div class="titleDash">Proximity</div>
                     <div id="images">
                         <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
-                        <div id="dib2"><img src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
+                        <div id="dib2"><img id="car" src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
                     </div>
                     <div id="infoProx">
-                        <span id="titleProximity">titulo</span>
-                        <div class="proximidad">
-                            <span id="meters"></span>
+                        <div class="item-prox">
+                            <span id="titleProximity"></span>
                         </div>
-                        <span id="datetime">fecha y hora</span>
+                        <div class="item-prox">
+                            <div class="proximidad">
+                                <span id="meters"></span>
+                            </div>
+                        </div>
+                        <div class="item-prox">
+                            <span id="datetime">fecha y hora</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,20 +61,46 @@
 @endsection
 @section('js')
 <script src="js/app.js"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->   
-<!-- <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script> -->
+
+
 <script type="text/javascript">
     $(document).ready(function() {
-        $.get("/api/getLastData/")
-        .done(function sucess(response) {
-            console.log(response);
-            var mts = parseFloat(response.datos[0].proximity_back) / 100;
-            var fecha= response.datos[0].lectura_fecha.split(' ')[0];
-            var hora= response.datos[0].lectura_fecha.split(' ')[1];
-            console.log(`fecha es ${fecha} y la hora es ${hora}`);
-            $('#dataT').html(response.datos[0].lectura_temperatura+"°");
-            $('#dataH').html(response.datos[0].lectura_humedad+"%");
-            $('#meters').html(mts);
-        });  
+        setTimeout(() => {
+            loadDashboard();
+        }, 1000);
+
+        function loadDashboard (){
+            $.get("/api/getLastData/")
+            .done(function sucess(response) {
+                console.log(response);
+                var mts = parseFloat(response.datos[0].proximity_back) / 100;
+                var centimetros = parseInt(response.datos[0].proximity_back);
+                var fecha= response.datos[0].lectura_fecha.split(' ')[0];
+                var hora= response.datos[0].lectura_fecha.split(' ')[1];
+                if(centimetros <= 70){
+                    $('#titleProximity').css('color', 'red')
+                    $('#titleProximity').html("Lock out!");
+                    $('.proximidad').css("border-color", "red" );
+                    $('#meters').css('color', 'red')
+                    $('#car').css("margin-bottom", "92px");
+                }
+                else if(centimetros > 70 && centimetros < 140){
+                    $('#titleProximity').html("Warning! Object close");
+                    $('#titleProximity').css('color', 'orange');
+                    $('.proximidad').css( "border-color", "yellow" );
+                    $('#meters').css('color', 'orange');
+                    $('#car').css('margin-bottom', '60px'); 
+                }
+                else{
+                    $('.proximidad').css( "border-color", "rgb(136, 207, 248)" );
+                    $('#car').css('margin-bottom', '0px');
+                }	
+                $('#dataT').html(response.datos[0].lectura_temperatura+"°");
+                $('#dataH').html(response.datos[0].lectura_humedad+"%");
+                $('#meters').html(mts);
+                $('#datetime').html(hora);
+            });  
+        }
     });
 </script>
 @endsection

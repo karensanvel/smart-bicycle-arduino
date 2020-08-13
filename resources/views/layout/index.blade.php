@@ -10,7 +10,7 @@
 
     @yield('css')
 </head>
-<body>
+<body id="body-layout">
         <!-- <nav class="navBar">
             <div id="logo"><img src="/images/logo3.png" alt="logo"></div>
             <div id="user">
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </header>
-        <div id="header" class="my-4">Bicycle route information Dashboard</div>
+        <div id="header">Bicycle route information Dashboard</div>
         @yield('content')
 </body>
 </html>

@@ -1980,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
             icon: markerIcon
           }).on('click', function (e) {
             self.map.setView(e.target.getLatLng(), 16);
-          }).addTo(_this2.map).bindPopup('El usuario ha activado la alarma.').openPopup();
+          }).addTo(_this2.map).bindPopup('THE ALARM HAS BEEN ACTIVATED.').openPopup();
         } else {
           var markerIcon = leaflet__WEBPACK_IMPORTED_MODULE_0___default.a.icon({
             iconUrl: "images/marker.png",
