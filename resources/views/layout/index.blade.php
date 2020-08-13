@@ -11,7 +11,7 @@
     @yield('css')
 </head>
 <body>
-        <nav class="navBar">
+        <!-- <nav class="navBar">
             <div id="logo"><img src="/images/logo3.png" alt="logo"></div>
             <div id="user">
                 <div id="profile_info">
@@ -40,7 +40,24 @@
                     </form>
                 </ul>
             </nav>
-        </nav>   
+        </nav>    -->
+        <header class="w-100 d-flex justify-content-between shadow-lg px-2" style="height: 70px;position: relative; overflow: hidden; background-color: #f8f9fa;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="images/logo-icon.png" class="mr-2" width="50" alt="">
+                <img src="images/logo-text.png" class="d-none d-sm-block" width="250" alt="">
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex flex-column justify-content-start align-items-end mr-2">
+                        <h5 class="mb-0 font-weight-bold">Daniel Ramirez</h5>
+                        <small class="text-right">Premium</small>
+                    </div>
+                    <span class="rounded-circle bg-info p-1 d-flex justify-content-center align-items-center" style="width: 38px;">
+                        <i class="fa fa-user text-white" style="font-size: 30px;"></i>
+                    </span>
+                </div>
+            </div>
+        </header>
         <div id="header">Bicycle route information Dashboard</div>
         @yield('content')
 </body>
