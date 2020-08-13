@@ -12,36 +12,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     </head>
-    <div id="divgps">
-        <div class="titleDash">Route traveled</div>
-        <div id="datosMapa"></div>
-        <div id="app">
-            <map-component></map-component>
-        </div>
-    </div>
-    <div id="divtemperatura">
-        <div class="titleDash">Temperature and Moisture</div>
-        <div id="temp">
-            <div class="data" id="dataT"></div>
-            <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
-        </div>
-        <div id="moist">
-            <div class="data" id="dataH"><h2></h2></div>
-            <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
-        </div>
-    </div>
-    <div id="divdistancia">
-        <div class="titleDash">Proximity</div>
-        <div id="images">
-            <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
-            <div id="dib2"><img src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
-        </div>
-        <div id="infoProx">
-            <span id="titleProximity">titulo</span>
-            <div class="proximidad">
-                <span id="meters"></span>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div id="divgps" class="bg-white">
+                    <div class="titleDash">Route traveled</div>
+                    <div id="datosMapa"></div>
+                    <div id="app">
+                        <map-component></map-component>
+                    </div>
+                </div>
             </div>
-            <span id="datetime">fecha y hora</span>
+            <div class="col-12 col-md-6 mb-4">
+                <div id="divtemperatura" class="mb-4">
+                    <div class="titleDash">Temperature and Moisture</div>
+                    <div id="temp">
+                        <div class="data" id="dataT"></div>
+                        <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
+                    </div>
+                    <div id="moist">
+                        <div class="data" id="dataH"><h2></h2></div>
+                        <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
+                    </div>
+                </div>
+                <div id="divdistancia">
+                    <div class="titleDash">Proximity</div>
+                    <div id="images">
+                        <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
+                        <div id="dib2"><img src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
+                    </div>
+                    <div id="infoProx">
+                        <span id="titleProximity">titulo</span>
+                        <div class="proximidad">
+                            <span id="meters"></span>
+                        </div>
+                        <span id="datetime">fecha y hora</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

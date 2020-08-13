@@ -1,11 +1,5 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="map" id="map"></div>
-            </div>
-        </div>
-    </div>
+    <div class="map" id="map"></div>
 </template>
 <script>
 import L from "leaflet";

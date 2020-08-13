@@ -84,29 +84,24 @@ li i{margin-right: 30px;}
 
          /*ESTILO DEL DASHBOARD PRINCIPAL | INDEX*/
 #divgps{
-    margin-top: 55px;
-    width: 50%;
     height: 530px;
-}
-#divtemperatura{
-    margin-top: 55px;
-    width: 30%;
-    height: 170px;
-}
-#divdistancia{
-    margin-top: 25px;
-    width: 30%;
-    height: 335px;
-}
-#divdistancia, #divgps, #divtemperatura{
-    float: left;
-    margin-left: 25px;
-    background: white;
     border-radius: 25px;
     box-shadow: 6px 6px 8px 0px #818181;
 }
+#divtemperatura{
+    height: 170px;
+}
+#divdistancia{
+    height: 335px;
+}
+#divdistancia, #divtemperatura{
+    background: white;
+    border-radius: 25px;
+    box-shadow: 6px 6px 8px 0px #818181;
+    overflow: hidden;
+}
 .titleDash {
-    height: 35px;
+    height: 45px;
     color: gray;
     font-size: 14pt;
     display: flex;
@@ -115,7 +110,7 @@ li i{margin-right: 30px;}
 }
 /* G P S*/
 #divgps .titleDash{
-    height: 70px;
+    height: 45px;
     color: gray;
     font-size: 14pt;
     display: flex;

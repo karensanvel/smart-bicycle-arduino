@@ -58,7 +58,7 @@
                 </div>
             </div>
         </header>
-        <div id="header">Bicycle route information Dashboard</div>
+        <div id="header" class="my-4">Bicycle route information Dashboard</div>
         @yield('content')
 </body>
 </html>
