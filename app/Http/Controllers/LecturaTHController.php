@@ -19,4 +19,6 @@ class LecturaTHController extends Controller
         $datos = LecturaTemperaturaHumedad::orderBy('lectura_fecha','desc')->limit(1)->get();; 
         return response()->json(['datos'=>$datos]);
     }
+
+    
 }
