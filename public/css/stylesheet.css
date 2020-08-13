@@ -105,18 +105,18 @@ li i{margin-right: 30px;}
     border-radius: 25px;
     box-shadow: 6px 6px 8px 0px #818181;
 }
-.titleDash{
+.titleDash {
     height: 35px;
     color: gray;
     font-size: 14pt;
     display: flex;
-    justify-content: center;align-items: center;;align-content: center;
+    justify-content: center;align-items: center;align-content: center;
+    border-bottom: 1px solid #e2e0e0;
 }
 /* G P S*/
 #divgps .titleDash{
     height: 70px;
     color: gray;
-    background: greenyellow;
     font-size: 14pt;
     display: flex;
     justify-content: center;align-items: center;align-content: center;
@@ -147,38 +147,68 @@ li i{margin-right: 30px;}
     color: rgb(158, 156, 156);
     font-size: 11pt;
 }
-#data{
+.data{
     width: 100%;
     height: 100px;
     background: #ffffff;
     color: blue;
     font-size: 28pt; font-weight: bold;
     display: flex;justify-content: center;align-items: center;
+    border-right: 1px solid #e2e0e0;
 }
 /* div de la proximidad*/
 #images{
     float: left;
     height: 300px;
     width: 50%;
+    border-right: 1px solid #e2e0e0;
 }
-#dib1{
-    background: salmon;
+#dib1, #dib2{
     display: flex;
     justify-content: center;align-content: center;align-items: flex-end;
     width: 100%;
     height: 125px;
 }
 #dib2{
-    background: violet;
-    display: flex;
+    /* display: flex;
     justify-content: center;align-content: center;align-items:flex-start;
-    width: 100%;
+    width: 100%; */
     height: 175px;
 }
 #infoProx{
-    display: flex;
+    display: block;
     float: right;
-    background: cadetblue;
     height: 300px;
     width: 50%;
+    justify-content: start;
+     /* align-items: center; */
+} 
+.proximidad {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: solid 10px rgb(174, 221, 240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#titleProximity{
+    position: relative;
+    
+}
+.proximidad #meters {
+    position: relative;
+    color: blue;
+    font-size: 23pt;
+}
+.proximidad #meters::after {
+ content: "meters";
+ text-align: center;
+ display: block;
+ font-size: 11pt;
+ color: rgb(158, 156, 156);
+}
+#datetime {
+    position: relative;
 }
