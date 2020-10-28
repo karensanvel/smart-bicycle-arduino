@@ -68,7 +68,7 @@
         setInterval(() => {
             loadDashboard();
         }, 1000);
-
+        //animacion recorrido
         function loadDashboard (){
             $.get("/api/getLastData/")
             .done(function sucess(response) {
