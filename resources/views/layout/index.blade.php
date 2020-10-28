@@ -49,8 +49,8 @@
             <div class="d-flex justify-content-end align-items-center">
                 <div class="d-flex justify-content-end align-items-center">
                     <div class="d-flex flex-column justify-content-start align-items-end mr-2">
-                        <h5 class="mb-0 font-weight-bold">Daniel Ramirez</h5>
-                        <small class="text-right">Premium</small>
+                        <h5 class="mb-0 font-weight-bold">{{Auth::user()->username}}</h5>
+                        <small class="text-right">{{Auth::user()->numero->numero}}</small>
                     </div>
                     <span class="rounded-circle bg-info p-1 d-flex justify-content-center align-items-center" style="width: 38px;">
                         <i class="fa fa-user text-white" style="font-size: 30px;"></i>

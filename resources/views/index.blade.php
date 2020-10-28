@@ -65,7 +65,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        setTimeout(() => {
+        setInterval(() => {
             loadDashboard();
         }, 1000);
 
