@@ -14,30 +14,48 @@
     </head>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-6 mb-4">
+            <div class="col-12 col-md-7 mb-4">
+                <div id="graph-speed-div" class="mb-4">
+                    graficas de velocidades
+                    <div class="graph-speed"></div>
+                    <div class="graph-speed"></div>
+                    <div class="graph-speed"></div>
+                </div>
                 <div id="divgps" class="bg-white">
                     <div class="titleDash">Route traveled</div>
-                    <div id="datosMapa"></div>
                     <div id="app">
                         <map-component></map-component>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-4">
-                <div id="divtemperatura" class="mb-4">
-                    <div class="titleDash">Temperature and Moisture</div>
-                    <div id="temp">
-                        <div class="data" id="dataT"></div>
-                        <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
+            <div class="col-12 col-md-5 mb-4">
+                <div class="col-12 col-md-12 container-two-box mb-4">
+                    <div id="divtemperatura" class="col-12 col-md-5">
+                        {{-- <div class="titleDash">Temperature and Moisture</div>
+                        <div id="temp">
+                            <div class="data" id="dataT"></div>
+                            <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
+                        </div>
+                        <div id="moist">
+                            <div class="data" id="dataH"><h2></h2></div>
+                            <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
+                        </div> --}}
                     </div>
-                    <div id="moist">
-                        <div class="data" id="dataH"><h2></h2></div>
-                        <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
+                    <div id="alarm" class="col-12 col-md-7">
+                        <div id="panicbutton-legend">Panic button disabled</div>
+                        <div class="panicbutton">
+                            <div id="circle-out">
+                                <div id="circle-in">
+                                    <span>SOS</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+             
                 <div id="divdistancia">
                     <div class="titleDash">Proximity</div>
-                    <div id="images">
+                    {{-- <div id="images">
                         <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
                         <div id="dib2"><img id="car" src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
                     </div>
@@ -53,7 +71,7 @@
                         <div class="item-prox">
                             <span id="datetime">fecha y hora</span>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
