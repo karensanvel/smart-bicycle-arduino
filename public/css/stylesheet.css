@@ -104,10 +104,13 @@ li i{margin-right: 30px;}
 
 /* GRAFICAS DE VELOCIDADES */
 #graph-speed-div {
-    height: 30%;
+    height: 27%;
     background: pink;
 }
-
+#divgps{
+    /* height: 530px; */
+    height: 61%;
+}
 /* G P S*/
 #divgps .titleDash{
     height: 45px;
@@ -115,65 +118,70 @@ li i{margin-right: 30px;}
     font-size: 14pt;
     display: flex;
     justify-content: center;align-items: center; align-content: center;
-}
-
-#divgps{
-    /* height: 530px; */
-    height: 60%;
-}
-
-.titleDash {
-    height: 45px;
-    color: gray;
-    font-size: 14pt;
-    display: flex;
-    justify-content: center;align-items: center;align-content: center;
     border-bottom: 1.5px solid #e2e0e0;
 }
-
 #mapa{
     margin-top: 20px; margin-left: 18px;
     width: 94%;
     height: 50%;
 }
 
-/* DIV DE LA TEMPERATURA Y LA HUMEDAD*/
 .container-two-box {
     display: flex;
     height: 32%;
 }
+/* DIV DE LA TEMPERATURA Y LA HUMEDAD*/
 #divtemperatura {
     height: 100%;/* 190px; */
     margin-left: -15px;
+    padding: unset;
 }
 #temp{
     text-align: center;
-    float: left;
-    width: 50%;
-    height: 135px;
+    height: 50%;
+    border-bottom: 1.5px solid #e2e0e0;
 }
 #moist{
     text-align: center;
-    float: right;
-    width: 50%;
-    height: 135px;
+    height: 50%;
 }
-#indicador{
-    width: 100%;
-    height:35px ;
-    background: white;
-    color: rgb(158, 156, 156);
-    font-size: 11pt;
+.titleTempHum {
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #605e5e;
+    font-size: 14pt;
 }
-.data{
-    width: 100%;
-    height: 100px;
+.tempHum-data-icon {
+    height: 50%;
+    display: flex;
+}
+.data {
+    width: 65%;
     background: #ffffff;
     color: blue;
     font-size: 28pt; font-weight: bold;
-    display: flex;justify-content: center;align-items: center;
-    border-right: 1.5px solid #e2e0e0;
+    display: flex;justify-content: center;align-items: end;
 }
+.tempHum-icon {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tempHum-icon img {
+    height: 30px;
+}
+.indicador{
+    width: 100%;
+    height: 25%;
+}
+.indicador i, .indicador span {
+    color: gray;
+    font-size: 10pt;
+}
+
 /* DIV ALARMA */
 #alarm {
     background: radial-gradient(ellipse farthest-corner, #0274d7, #0c4372, #041d34);
@@ -222,9 +230,78 @@ li i{margin-right: 30px;}
 
 /* div de la proximidad*/
 #divdistancia {
-    height: 315px;
+    height: 56%; /*315px;*/
+    background: linear-gradient(to bottom, #000368 10%, #0e4caa 54%, #6060ff 90%);
 }
-#images{
+.prox-title {
+    height: 13%;
+    color: #ffffff;
+    display: flex; justify-content: center;
+    align-items: center;
+}
+.prox-data {
+    height: 30%;
+    color: #ffffff;
+    /* background: coral; */
+
+}
+.prox-icons {
+    height: 16%;
+}
+.fa-cloud {
+    color: #dbd6d6;
+    font-size: 30pt;
+    margin-left: 20%;
+}
+.diff-cloud {
+    height: 55%;
+    margin-top: -27px;
+}
+.moon-icon {
+    height: 40px;
+    margin-top: -15px;
+}
+.box-icons-arbustos {
+    display: flex;
+    align-items: flex-end;
+}
+.arbusto-icon {
+    height: 35px;
+    margin-left: 7%;
+}
+.prox-road {
+    height: 15%;
+    background: gray;
+    display: flex;
+    align-items: flex-end;
+}
+.car-area {
+    width: 70%;
+    justify-content: flex-start;
+}
+.car-icon {
+    height: 57px;
+}
+.cyclist-area {
+    width: 30%;
+}
+.cyclist-icon {
+    height: 42px;
+}
+
+.prox-green {
+    height: 10%;
+    background: green;
+    display: flex;
+}
+.roca-icon {
+    height: 40px;
+    margin-left: 10%;
+}
+
+
+
+/* #images{
     float: left;
     height: 300px;
     width: 50%;
@@ -240,8 +317,8 @@ li i{margin-right: 30px;}
     /* display: flex;
     justify-content: center;align-content: center;align-items:flex-start;
     width: 100%; */
-    height: 175px;
-}
+    /*height: 175px;*/
+/*}
 #infoProx{
     display: block;
     float: right;
@@ -292,4 +369,4 @@ li i{margin-right: 30px;}
 #datetime {
     font-size: 15pt;
     color: gray;
-}
+} */

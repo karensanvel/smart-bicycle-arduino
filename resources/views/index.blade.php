@@ -31,15 +31,33 @@
             <div class="col-12 col-md-5 mb-4">
                 <div class="col-12 col-md-12 container-two-box mb-4">
                     <div id="divtemperatura" class="col-12 col-md-5">
-                        {{-- <div class="titleDash">Temperature and Moisture</div>
+                        {{-- <div class="titleDash">Temperature and Moisture</div> --}}
                         <div id="temp">
-                            <div class="data" id="dataT"></div>
-                            <div id="indicador" class="indicador"><i class="fa fa-thermometer-empty" aria-hidden="true"></i> Celsius</div>
+                            <div class="titleTempHum">Temperature</div>
+                            <div class="tempHum-data-icon">
+                                <div class="data" id="dataT"></div>
+                                <div class="tempHum-icon">
+                                    <img src="/images/sun.png">
+                                </div>
+                            </div>
+                            <div class="indicador">
+                                <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
+                                <span>Celsius</span>
+                            </div>
                         </div>
                         <div id="moist">
-                            <div class="data" id="dataH"><h2></h2></div>
-                            <div id="indicador" class="indicador"><i class="fa fa-tint" aria-hidden="true"></i> Water vapor</div>
-                        </div> --}}
+                            <div class="titleTempHum">Moisture</div>
+                            <div class="tempHum-data-icon">
+                                <div class="data" id="dataH"></div>
+                                <div class="tempHum-icon">
+                                    <img src="/images/humidity-icon.png">
+                                </div>
+                            </div>
+                            <div class="indicador">
+                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                <span>Water vapor</span>
+                            </div>
+                        </div>
                     </div>
                     <div id="alarm" class="col-12 col-md-7">
                         <div id="panicbutton-legend">Panic button disabled</div>
@@ -54,7 +72,7 @@
                 </div>
              
                 <div id="divdistancia">
-                    <div class="titleDash">Proximity</div>
+                    {{-- <div class="titleDash">Proximity</div> --}}
                     {{-- <div id="images">
                         <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
                         <div id="dib2"><img id="car" src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
@@ -72,6 +90,29 @@
                             <span id="datetime">fecha y hora</span>
                         </div>
                     </div> --}}
+                    <div class="prox-title">Distance between cyclist and object</div>
+                    <div class="prox-data">deployment of data... datos de la proximidad aqui...</div>
+                    <div class="prox-icons">
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                        <img class=" fa-cloud diff-cloud" src="/images/cloud2.png">
+                        <img class="fa-cloud moon-icon" src="/images/cloud-moon.png">
+                    </div>
+                    <div class="prox-icons box-icons-arbustos">
+                        <img class="arbusto-icon" src="/images/arbusto1.png">
+                        <img class="arbusto-icon" src="/images/arbusto2.png">
+                        <img class="arbusto-icon" src="/images/arbusto3.png">
+                        <img class="arbusto-icon" src="/images/arbusto4.png">
+                    </div>
+                    <div class="prox-road">
+                        <div class="car-area"><img class="car-icon" src="/images/carr.png"></div>
+                        <div class="cyclist-area"><img class="cyclist-icon" src="/images/cyclist.png"></div>
+                    </div>
+                    <div class="prox-green">
+                        <img class="roca-icon" src="/images/roca.png">
+                        <img class="roca-icon" src="/images/roca2.png">
+                        <img class="roca-icon" src="/images/roca.png">
+                        <img class="roca-icon" src="/images/roca3.png">
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,7 +120,6 @@
 @endsection
 @section('js')
 <script src="js/app.js"></script> <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->   
-
 
 <script type="text/javascript">
     $(document).ready(function() {
