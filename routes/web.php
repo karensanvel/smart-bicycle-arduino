@@ -19,4 +19,5 @@ Route::post('logout', 'Auth\LoginController@logout')->name('user.auth.logout');/
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/index', 'UserController@index')->name('user.index');
+    Route::get('/history', 'LecturaTHController@history')->name('lectura.history');
 });

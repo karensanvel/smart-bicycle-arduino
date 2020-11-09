@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class LecturaTHController extends Controller
 {
+    //vista para historiales
+    public function history()
+    {
+        return view('history');
+    }
+
+    //datos en el dashboard principal
     public function getDatos(Request $request) //registro de los ultimos 10 datos
     {
         $turnos = LecturaTemperaturaHumedad::orderBy('lectura_fecha','desc')->limit(10)->get();
