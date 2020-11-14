@@ -31,7 +31,6 @@
             <div class="col-12 col-md-5 mb-4">
                 <div class="col-12 col-md-12 container-two-box mb-4">
                     <div id="divtemperatura" class="col-12 col-md-5">
-                        {{-- <div class="titleDash">Temperature and Moisture</div> --}}
                         <div id="temp">
                             <div class="titleTempHum">Temperature</div>
                             <div class="tempHum-data-icon">
@@ -64,7 +63,9 @@
                         <div class="panicbutton">
                             <div id="circle-out">
                                 <div id="circle-in">
-                                    <span>SOS</span>
+                                    <div>
+                                        <span>SOS</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -72,26 +73,29 @@
                 </div>
              
                 <div id="divdistancia">
-                    {{-- <div class="titleDash">Proximity</div> --}}
-                    {{-- <div id="images">
-                        <div id="dib1"><img src="/images/IconoCiclista.png" alt="ciclista" ></div>
-                        <div id="dib2"><img id="car" src="/images/CarroIcono.png" alt="auto" height="100px" width="100px"></div>
-                    </div>
-                    <div id="infoProx">
-                        <div class="item-prox">
-                            <span id="titleProximity"></span>
+                    <div class="prox-title">Distance between cyclist and object</div>
+                    <div class="prox-data">
+                        <div class="container-data-prox">
+                            <span id="datetime">september, 25th 23:45:54 pm</span>
                         </div>
-                        <div class="item-prox">
-                            <div class="proximidad">
-                                <span id="meters"></span>
+                        <div class="container-data-prox">
+                            <div class="item-prox">
+                                <div class="proximidad data-label">
+                                    <span id="meters">3.56 Mts</span>
+                                </div>
+                                <div class="label">Close distance to object</div>
+                            </div>
+                            <div class="item-prox">
+                                <div class="data-label">
+                                    <span id="calle">Lazaro Cardenas 9564</span>
+                                </div>
+                                <div class="label">Ubication</div>
+                            </div>
+                            <div class="item-prox">
+                                <span id="titleProximity">Everything is ok</span>
                             </div>
                         </div>
-                        <div class="item-prox">
-                            <span id="datetime">fecha y hora</span>
-                        </div>
-                    </div> --}}
-                    <div class="prox-title">Distance between cyclist and object</div>
-                    <div class="prox-data">deployment of data... datos de la proximidad aqui...</div>
+                    </div>
                     <div class="prox-icons">
                         <i class="fa fa-cloud" aria-hidden="true"></i>
                         <img class=" fa-cloud diff-cloud" src="/images/cloud2.png">
@@ -135,22 +139,38 @@
                 var centimetros = parseInt(response.datos[0].proximity_back);
                 var fecha= response.datos[0].lectura_fecha.split(' ')[0];
                 var hora= response.datos[0].lectura_fecha.split(' ')[1];
+                var alarma = response.datos[0].alarm;
+                if(alarma === '1') {
+                    $('#panicbutton-legend').html('Alarm activated')
+                    $('#panicbutton-legend').css('color', 'red')
+                    $('#circle-in div').fadeIn(500, function () {
+                        $('#circle-in div').css('background', 'red');
+                        $('#circle-in div span').css('color', 'white');
+
+                    });
+                    $('#circle-in div').fadeOut(500, function () {
+                        $('#circle-in div').css('background', 'transparent');
+                        $('#circle-in div span').css('color', 'red');
+                    });
+                }
+                else {
+                    $('#panicbutton-legend').html('Panic button disabled');
+                    $('#panicbutton-legend').css('color', 'white');
+                    $('#circle-in div').css('display', 'flex');
+                }
                 if(centimetros <= 70){
                     $('#titleProximity').css('color', 'red')
                     $('#titleProximity').html("Lock out!");
-                    $('.proximidad').css("border-color", "red" );
-                    $('#meters').css('color', 'red')
                     $('#car').css("margin-bottom", "92px");
                 }
                 else if(centimetros > 70 && centimetros < 140){
                     $('#titleProximity').html("Warning! Object close");
                     $('#titleProximity').css('color', 'orange');
-                    $('.proximidad').css( "border-color", "yellow" );
-                    $('#meters').css('color', 'orange');
                     $('#car').css('margin-bottom', '60px'); 
                 }
-                else{
-                    $('.proximidad').css( "border-color", "rgb(136, 207, 248)" );
+                else {
+                    $('#titleProximity').html("Everything is ok");
+                    $('#titleProximity').css('color', '#13da13');
                     $('#car').css('margin-bottom', '0px');
                 }	
                 $('#dataT').html(response.datos[0].lectura_temperatura+"°");

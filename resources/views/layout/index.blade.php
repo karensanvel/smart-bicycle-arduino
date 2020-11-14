@@ -69,7 +69,6 @@
 @yield('js')
 <script type="text/javascript">
      $(document).ready(function() {
-         console.log('AQUI ANDAMOSSS')
         var opened = false;
         $("#toggle").click(function() {
             if(!opened) {
@@ -78,9 +77,14 @@
             }
             else {
                 $('#navmenu').css('display', 'none');
-                opened = false
+                opened = false;
             }
-
+        });
+        $('.container-fluid, #header').click(function(){
+            if(opened) {
+                $('#navmenu').css('display', 'none');
+                opened = false;
+            }
         });
      });
 </script>
