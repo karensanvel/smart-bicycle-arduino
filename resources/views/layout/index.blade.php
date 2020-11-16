@@ -62,7 +62,7 @@
                 </div>
             </div>
         </header>
-        <div id="header" class="mb-2">Bicycle route information Dashboard</div>
+        
         @yield('content')
 </body>
 </html>

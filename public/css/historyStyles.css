@@ -1,0 +1,24 @@
+.box-container {
+    background: white;
+    box-shadow: 6px 6px 8px 0px #818181;
+}
+.table-viajes {
+    height: 220px;
+}
+.routes-map {
+    height: 265px;
+}
+.line-graph {
+    height: 200px;
+    
+}
+.two-boxes {
+    display: flex;
+    height: 285px;
+}
+.table-incidents {
+    height: 100%;
+}
+.table-weather {
+    height: 100%;
+}

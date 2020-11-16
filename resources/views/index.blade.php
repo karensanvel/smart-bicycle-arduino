@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     </head>
+    <div id="header" class="mb-2">Bicycle route information Dashboard</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-7 mb-4">
@@ -71,7 +72,6 @@
                         </div>
                     </div>
                 </div>
-             
                 <div id="divdistancia">
                     <div class="prox-title">Distance between cyclist and object</div>
                     <div class="prox-data">
