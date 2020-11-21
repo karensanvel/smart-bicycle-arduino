@@ -16,6 +16,22 @@ class CoordenadaController extends Controller
         $coordenadas = Coordenada::orderBy('created_at','desc')->limit(1)->get();
         return response()->json($coordenadas);
     }
+    
+    //Obtener todas las coordenadas y el tiempo de viaje de la ultima ruta que se esté viajando
+    public function lastRoute()
+    {
+        //obtener la ultima ruta
+        $ruta = Ruta::orderBy('created_at','desc')->limit(1)->get();
+
+        //obtener el tiempo entre el punto de inicio y ultimo punto de la ruta
+        $ultima = Coordenada::where('ruta_id', $ruta[0]->id)->orderBy('created_at','desc')->limit(1)->get();
+        $primera = Coordenada::where('ruta_id', $ruta[0]->id)->orderBy('created_at','asc')->limit(1)->get();
+        $horaP = $primera[0]->created_at; $horaF = $ultima[0]->created_at; $intervalo = $horaF->diff($horaP);
+        
+        //coordenadas de la ultima ruta
+        $coordenadas = Ruta::where('id', $ruta[0]->id)->with('coordenadas')->get();
+        return response()->json(['ruta'=>$coordenadas, 'tiempo'=> $intervalo->format('%H:%I:%S')]);
+    }
 
     //traer todas las coordenadas por el id del viaje
     public function getAllCoordenadasPorViaje($id)
