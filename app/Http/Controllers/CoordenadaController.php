@@ -17,7 +17,7 @@ class CoordenadaController extends Controller
         return response()->json($coordenadas);
     }
     
-    //Obtener todas las coordenadas y el tiempo de viaje de la ultima ruta que se esté viajando
+    //Obtener todas las coordenadas y el tiempo de viaje de la ultima ruta que se esté viajando (punto actual del ciclista)
     public function lastRoute()
     {
         //obtener la ultima ruta
@@ -33,13 +33,6 @@ class CoordenadaController extends Controller
         return response()->json(['ruta'=>$coordenadas, 'tiempo'=> $intervalo->format('%H:%I:%S')]);
     }
 
-    //traer todas las coordenadas por el id del viaje
-    public function getAllCoordenadasPorViaje($id)
-    {
-        $coordenadas = Ruta::where('id', $id)->with('coordenadas')->get();
-        return response()->json($coordenadas);
-    }
-
     //traer las rutas viajadas por el usuario con sus coordenadas
     public function getAllRoutes()
     {
@@ -47,15 +40,25 @@ class CoordenadaController extends Controller
         return response()->json($rutas);
     }
 
-    //obtener la diferencia de tiempo entre punto de inicio y punto actual de un viaje ejecutandose actualmente
-    public function tiempoViaje()
+      //traer todas las coordenadas por el id del viaje
+      public function getAllCoordenadasPorViaje($id)
+      {
+          $coordenadas = Ruta::where('id', $id)->with('coordenadas')->get();
+          return response()->json($coordenadas);
+      }
+  
+    //Obtener todas las coordenadas, punto de inicio y fin, tiempo y fecha de una ruta especifica.
+    // (para grafica de lineas o tabla de rutas)
+    public function getParametersByRoute($rutaId)
     {
-        $ultima = Coordenada::orderBy('created_at','desc')->limit(1)->get();
-        $primera = Coordenada::where('ruta_id', $ultima[0]->ruta_id)->orderBy('created_at','asc')->limit(1)->get();
+        $coordenadas = Ruta::where('id', $rutaId)->with('coordenadas')->get();
+        $ultima = Coordenada::where('ruta_id', $rutaId)->orderBy('created_at','desc')->limit(1)->get();
+        $primera = Coordenada::where('ruta_id', $rutaId)->orderBy('created_at','asc')->limit(1)->get();
         $horaP = $primera[0]->created_at;
         $horaF = $ultima[0]->created_at;
         $intervalo = $horaF->diff($horaP);
-        return response()->json(['datos' => ['primeraCoordenada'=> $primera, 'ultimaCoordenada' => $ultima,  
+        return response()->json(['ruta'=>$coordenadas,'parametros' => ['primeraCoordenada'=> $primera, 'ultimaCoordenada' => $ultima,
+        'fechaViaje'=> $primera[0]->created_at->toDateString(),
         'start'=> $primera[0]->created_at->toTimeString(), 'end'=> $ultima[0]->created_at->toTimeString(), 
         'tiempo'=> $intervalo->format('%H:%I:%S')
         ]]);
