@@ -17,7 +17,6 @@
         <div class="row">
             <div class="col-12 col-md-7 mb-4">
                 <div id="graph-speed-div" class="mb-4">
-                    graficas de velocidades
                     <div class="graph-speed"></div>
                     <div class="graph-speed"></div>
                     <div class="graph-speed"></div>
@@ -158,6 +157,7 @@
                     $('#panicbutton-legend').css('color', 'white');
                     $('#circle-in div').css('display', 'flex');
                 }
+
                 if(centimetros <= 70){
                     $('#titleProximity').css('color', 'red')
                     $('#titleProximity').html("Lock out!");

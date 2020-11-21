@@ -117,7 +117,18 @@ li i{margin-right: 30px;}
 /* GRAFICAS DE VELOCIDADES */
 #graph-speed-div {
     height: 27%;
-    background: pink;
+    background:transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph-speed {
+    width: 30%;
+    height: 90%;
+    background: white;
+    box-shadow: 6px 6px 8px 0px #818181;
+    margin: auto;
 }
 #divgps{
     /* height: 530px; */
