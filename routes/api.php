@@ -3,11 +3,15 @@
 use Illuminate\Http\Request;
 
 
-Route::get('getDatos', 'LecturaTHController@getDatos')->name('lectura.datos.get');
-Route::get('getDatosUser', 'UserController@getDatos')->name('user.datos.get');
-Route::get('getLastData', 'LecturaTHController@getLastData')->name('lectura.data.get');
-//Route::get('getLecturas', 'LecturaTHController@getLecturas')->name('lecturas.data.get');
-Route::get('numeroSerial/{number}', 'UserController@getNumber')->name('user.numero.get');
-Route::get('user/{username}', 'UserController@getUsername')->name('user.username.get');
-Route::get('numeroserial/{id}', 'UserController@getId')->name('user.serialId.get');
-Route::post('create', 'UserController@store')->name('user.datos.store');
+Route::get('getDatos', 'LecturaTHController@getDatos')->name('lectura.datos.get');//ultimos 10 datos
+Route::get('getLastData', 'LecturaTHController@getLastData')->name('lectura.data.get');//ultimo dato registrado en la bd
+Route::get('history-tempHum', 'LecturaTHController@temperatureMoistureHistory')->name('lectura.history.temphum.get');
+Route::get('history-alarm', 'LecturaTHController@alarmHistory')->name('lectura.history.alarm.get');
+Route::get('getAllCoordenadas/{id}', 'CoordenadaController@getAllCoordenadasPorViaje')->name('coordenadas.viaje-coordenadas.get');
+Route::get('getAllRutas', 'CoordenadaController@getAllRutas')->name('coordenadas.rutas.get');
+Route::get('ultimasCoordenadas', 'CoordenadaController@ultimasCoordenadas')->name('coordenadas.ultimas-coordenadas.get');
+Route::get('tiempoViaje', 'CoordenadaController@tiempoViaje')->name('coordenadas.tiempo-distancia.get');
+Route::get('numeroSerial/{number}', 'UserController@getNumber')->name('user.numero.get');//numero serial del logeado (BORRAR Y ADAPTAR)
+Route::get('user/{username}', 'UserController@getUsername')->name('user.username.get'); //informacion del usuario con su numero serial
+Route::get('numeroserial/{id}', 'UserController@getId')->name('user.serialId.get');//informacion del usuario (BORRAR Y ADAPTAR)
+Route::post('create', 'UserController@store')->name('user.datos.store');//crear un usuario 

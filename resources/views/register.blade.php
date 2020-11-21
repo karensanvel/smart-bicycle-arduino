@@ -16,7 +16,7 @@
   </head>
   <body>
       <header>
-          <div><img src="/images/logo.png">SmartBicycle</div>
+          <div><img src="/images/logo-icon.png">SmartBicycle</div>
       </header>
       <div id="big">
         <div id="text">
