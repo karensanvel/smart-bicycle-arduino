@@ -40,8 +40,8 @@ class CoordenadaController extends Controller
         return response()->json($coordenadas);
     }
 
-    //traer todas las coordenadas por el id del viaje PENDIENTE DE TERMINAR
-    public function getAllRutas()
+    //traer las rutas viajadas por el usuario con sus coordenadas
+    public function getAllRoutes()
     {
         $rutas = Ruta::with('coordenadas')->get();
         return response()->json($rutas);

@@ -9,7 +9,7 @@ Route::get('history-tempHum', 'LecturaTHController@temperatureMoistureHistory')-
 Route::get('history-alarm', 'LecturaTHController@alarmHistory')->name('lectura.history.alarm.get');
 Route::get('lastRoute', 'CoordenadaController@lastRoute')->name('last.route.get');//Obtener todas las coordenadas y el tiempo de viaje de la ultima ruta que se esté viajando
 Route::get('getAllCoordenadas/{id}', 'CoordenadaController@getAllCoordenadasPorViaje')->name('coordenadas.viaje-coordenadas.get');
-Route::get('getAllRutas', 'CoordenadaController@getAllRutas')->name('coordenadas.rutas.get'); 
+Route::get('getAllRoutes', 'CoordenadaController@getAllRoutes')->name('coordenadas.rutas.get'); 
 Route::get('ultimasCoordenadas', 'CoordenadaController@ultimasCoordenadas')->name('coordenadas.ultimas-coordenadas.get');
 Route::get('tiempoViaje', 'CoordenadaController@tiempoViaje')->name('coordenadas.tiempo-distancia.get');
 Route::get('numeroSerial/{number}', 'UserController@getNumber')->name('user.numero.get');//numero serial del logeado (BORRAR Y ADAPTAR)
