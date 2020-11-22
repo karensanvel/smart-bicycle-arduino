@@ -3,6 +3,9 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import store from './store';
+import HighchartsVue from 'highcharts-vue'
+
 require("./bootstrap");
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -21,11 +24,17 @@ window.Vue = require("vue");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.use(HighchartsVue)
+
 Vue.component(
-    "map-component",
-    require("./components/MapComponent.vue").default
+    "last-route-component",
+    require("./components/LastRoute.vue").default
 );
 
+Vue.component(
+    "last-route-travel-time-component",
+    require("./components/LastRouteTravelTime.vue").default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,5 +42,6 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: "#app"
+    el: "#app",
+    store
 });

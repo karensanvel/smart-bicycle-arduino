@@ -1,9 +1,12 @@
 <template>
-    <div class="map" id="map"></div>
+    <div>
+        <div class="map" id="map"></div>
+    </div>
 </template>
 <script>
 import L from "leaflet";
 import axios from 'axios';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: "MapComponent",
@@ -16,7 +19,6 @@ export default {
                 beginning: null,
                 end: null,
             },
-            route: null,
             layer: {
                 id: 0,
                 name: "Route traveled",
@@ -25,11 +27,15 @@ export default {
             }
         };
     },
+    computed: {
+        // ...mapGetters({
+        //     lastRoute: 'route/lastRoute',
+        // }),
+    },
     created() {
         setInterval(() => {
             // this.activateAlarm();
             this.fetchLastRoute();
-            console.log('hiuhuonibiubiubbiu');
         }, 10000)
     },
     mounted() {
@@ -38,8 +44,9 @@ export default {
     methods: {
         fetchLastRoute() {
             axios.get('api/lastRoute/').then(res => {
-                this.route = res.data.ruta[0];
-                this.initLayer(this.route.coordenadas);
+                let route = res.data.ruta[0];
+                this.setLastRoute(route);
+                this.initLayer(route.coordenadas);
             });
         },
         initLayer(data) {
@@ -126,8 +133,11 @@ export default {
                     }).addTo(this.map);
                 }
             }))
-        }
-    }
+        },
+        ...mapActions({
+            setLastRoute: 'route/SET_LAST_ROUTE',
+        }),
+    },
 };
 </script>
 <style lang="css" scope>
