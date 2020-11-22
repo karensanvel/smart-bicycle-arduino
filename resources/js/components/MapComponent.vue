@@ -11,7 +11,12 @@ export default {
         return {
             map: null,
             tileLayer: null,
-            marker: null,
+            markers: {
+                sos: null,
+                beginning: null,
+                end: null,
+            },
+            route: null,
             layer: {
                 id: 0,
                 name: "Route traveled",
@@ -20,27 +25,64 @@ export default {
             }
         };
     },
+    created() {
+        setInterval(() => {
+            // this.activateAlarm();
+            this.fetchLastRoute();
+            console.log('hiuhuonibiubiubbiu');
+        }, 10000)
+    },
     mounted() {
         this.initMap();
-        this.initLayer();
-
-        setTimeout(() => {
-            this.activateAlarm();
-        }, 1000)
     },
     methods: {
-        initLayer() {
+        fetchLastRoute() {
+            axios.get('api/lastRoute/').then(res => {
+                this.route = res.data.ruta[0];
+                this.initLayer(this.route.coordenadas);
+            });
+        },
+        initLayer(data) {
             var self = this;
+            var latlngs = [];
+            this.markers.beginning ? this.map.removeLayer(this.markers.beginning) : null;
+            this.markers.end ? this.map.removeLayer(this.markers.end) : null;
 
-            var markerIcon = L.icon({
+            for (let i = 0; i < data.length; i++) {
+               latlngs.push([data[i].latitud, data[i].longitud]);
+            }
+
+            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(this.map);
+
+            this.map.fitBounds(polyline.getBounds());
+
+            var markerBeginningIcon = L.icon({
                 iconUrl: "images/marker.png",
                 iconSize: [32, 32]
             });
-            this.marker = L.marker([32.533, -117.05], {
-                icon: markerIcon
-            }).on('click', function (e) {
-                self.map.setView(e.target.getLatLng(), 15)
+
+            this.markers.beginning = L.marker(latlngs[0], {
+                icon: markerBeginningIcon
             }).addTo(this.map);
+
+            var markerEndIcon = L.icon({
+                iconUrl: "images/marker.png",
+                iconSize: [32, 32]
+            });
+
+            this.markers.end = L.marker(latlngs[latlngs.length-1], {
+                icon: markerEndIcon
+            }).addTo(this.map);
+
+            // var markerIcon = L.icon({
+            //     iconUrl: "images/marker.png",
+            //     iconSize: [32, 32]
+            // });
+            // this.marker = L.marker([32.533, -117.05], {
+            //     icon: markerIcon
+            // }).on('click', function (e) {
+            //     self.map.setView(e.target.getLatLng(), 15)
+            // }).addTo(this.map);
         },
         initMap() {
             this.map = L.map("map").setView([32.533, -117.05], 12);
@@ -58,14 +100,14 @@ export default {
             axios.get('api/getLastData/').then((res => {
                 var self = this;
                 if (res.data.datos[0].alarm === "1") {
-                    this.map.removeLayer(this.marker);
+                    this.map.removeLayer(this.markers.sos);
         
                     var markerIcon = L.icon({
                         iconUrl: "images/sos.png",
                         iconSize: [60, 60],
                         className: 'blink'
                     });
-                    this.marker = L.marker([32.533, -117.05], {
+                    this.markers.sos = L.marker([32.533, -117.05], {
                         icon: markerIcon
                     }).on('click', function (e) {
                         self.map.setView(e.target.getLatLng(), 16)
@@ -77,7 +119,7 @@ export default {
                         iconUrl: "images/marker.png",
                         iconSize: [32, 32]
                     });
-                    this.marker = L.marker([32.533, -117.05], {
+                    this.markers.sos = L.marker([32.533, -117.05], {
                         icon: markerIcon
                     }).on('click', function (e) {
                         self.map.setView(e.target.getLatLng(), 16)

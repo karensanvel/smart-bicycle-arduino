@@ -133,7 +133,7 @@
         function loadDashboard (){
             $.get("/api/getLastData/")
             .done(function sucess(response) {
-                console.log(response);
+                // console.log(response);
                 var mts = parseFloat(response.datos[0].proximity_back) / 100;
                 var centimetros = parseInt(response.datos[0].proximity_back);
                 var fecha= response.datos[0].lectura_fecha.split(' ')[0];
