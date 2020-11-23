@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     // initial state
-    route: 1,
+    route: null,
   },
   getters: {
     // getters

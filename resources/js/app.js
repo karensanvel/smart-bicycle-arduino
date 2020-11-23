@@ -4,7 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import store from './store';
-import HighchartsVue from 'highcharts-vue'
 
 require("./bootstrap");
 import "leaflet/dist/leaflet.css";
@@ -12,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
 window.Vue = require("vue");
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -24,7 +24,7 @@ window.Vue = require("vue");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.use(HighchartsVue)
+// Vue.use(HighchartsVue)
 
 Vue.component(
     "last-route-component",
@@ -35,6 +35,12 @@ Vue.component(
     "last-route-travel-time-component",
     require("./components/LastRouteTravelTime.vue").default
 );
+
+Vue.component(
+    "last-route-speed-component",
+    require("./components/LastRouteSpeed.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

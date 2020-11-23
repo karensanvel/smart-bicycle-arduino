@@ -45,6 +45,7 @@ export default {
         fetchLastRoute() {
             axios.get('api/lastRoute/').then(res => {
                 let route = res.data.ruta[0];
+                route.time = res.data.tiempo;
                 this.setLastRoute(route);
                 this.initLayer(route.coordenadas);
             });
