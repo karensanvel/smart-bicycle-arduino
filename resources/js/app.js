@@ -3,12 +3,15 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import store from './store';
+
 require("./bootstrap");
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
 window.Vue = require("vue");
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,9 +24,21 @@ window.Vue = require("vue");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// Vue.use(HighchartsVue)
+
 Vue.component(
-    "map-component",
-    require("./components/MapComponent.vue").default
+    "last-route-component",
+    require("./components/LastRoute.vue").default
+);
+
+Vue.component(
+    "last-route-travel-time-component",
+    require("./components/LastRouteTravelTime.vue").default
+);
+
+Vue.component(
+    "last-route-speed-component",
+    require("./components/LastRouteSpeed.vue").default
 );
 
 /**
@@ -33,5 +48,6 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: "#app"
+    el: "#app",
+    store
 });

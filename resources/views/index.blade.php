@@ -11,21 +11,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     </head>
     <div id="header" class="mb-2">Bicycle route information Dashboard</div>
-    <div class="container-fluid">
+    <div id="app" class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-7 mb-4">
-                <div id="graph-speed-div" class="mb-4">
-                    <div class="graph-speed"></div>
-                    <div class="graph-speed"></div>
-                    <div class="graph-speed"></div>
+                <div class="mb-4 d-flex">
+                    <div class="graph-speed">
+                        <last-route-travel-time-component></last-route-travel-time-component>
+                    </div>
+                    <div class="graph-speed">q</div>
+                    <div class="graph-speed">
+                        <last-route-speed-component></last-route-speed-component>
+                    </div>
                 </div>
                 <div id="divgps" class="bg-white">
                     <div class="titleDash">Route traveled</div>
-                    <div id="app">
-                        <map-component></map-component>
-                    </div>
+                    <last-route-component></last-route-component>
                 </div>
             </div>
             <div class="col-12 col-md-5 mb-4">
@@ -133,7 +142,7 @@
         function loadDashboard (){
             $.get("/api/getLastData/")
             .done(function sucess(response) {
-                console.log(response);
+                // console.log(response);
                 var mts = parseFloat(response.datos[0].proximity_back) / 100;
                 var centimetros = parseInt(response.datos[0].proximity_back);
                 var fecha= response.datos[0].lectura_fecha.split(' ')[0];
@@ -181,6 +190,7 @@
         }
     });
 </script>
+
 @endsection
 
 
