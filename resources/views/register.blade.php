@@ -173,7 +173,6 @@
                         $('#username').val("");
                         $('#password').val("");
                         $('#password_confirmation').val("");
-                        console.log('si')
                         var dominio='/login';
                         window.location.href=dominio;
                     }).fail(function error(response){

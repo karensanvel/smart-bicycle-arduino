@@ -29,10 +29,8 @@
             {{-- </div> --}}
         {{-- </nav>  --}}
         <header class="w-100 d-flex justify-content-between shadow-lg px-2">
-            <div class="d-flex justify-content-center align-items-center">
-                <img src="images/logo-icon.png" class="mr-2" width="50" alt="">
-                
-                <img src="images/logo-text.png" class="d-none d-sm-block" width="250" alt="">
+            <div class="d-flex justify-content-start align-items-start logo-container">
+                <img src="images/logo-blanco.png">
             </div>
             <div class="d-flex justify-content-end align-items-center">
                 <div class="d-flex justify-content-end align-items-center">

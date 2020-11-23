@@ -22,8 +22,24 @@
             <div class="col-12 col-sm-12 col-md-7">
                 <div class="line-graph mb-4 box-container">lines graph</div>
                 <div class="col two-boxes">
-                    <div class="col-12 col-sm-12 col-md-7 ml-n3 box-container table-incidents">incident log</div>
-                    <div class="col-12 col-sm-12 col-md-5 ml-4 box-container table-weather">weather</div>
+                    <div class="col-12 col-sm-12 col-md-6 ml-n3 box-container table-incidents">
+                        <span>Incident Log</span>
+                        <div class="table-container">
+                            <table id="alarmTable" class="table" cellspacing="0" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                        </div> 
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 ml-4 box-container table-weather">
+                        <span>Temperature and moisture</span>
+                        <div class="table-container">
+                            <table id="tempHumTable" class="table" cellspacing="0" width="100%">
+                                <tbody>
+                                </tbody>
+                              </table>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,6 +50,36 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $.get("/api/history-tempHum/")
+            .done(function sucess(response) {
+                $.each(response.datos,function(key, value) {
+                    $('#tempHumTable tbody').append(
+                        `<tr>
+                            <td>${value.fecha}</td>
+                            <td><img src="/images/sun.png">${value.temperatura.toFixed(2)}°</td>
+                            <td><img src="/images/humidity-icon.png">${value.humedad.toFixed(2)}%</td>
+                        </tr>`             
+                    );
+                });
+            }).fail(function error(response){
+                console.log(response.error)
+            });
+        
+            $.get("/api/history-alarm/")
+            .done(function sucess(response) {
+                console.log(response);
+                $.each(response.datos,function(key, value) {
+                    $('#alarmTable tbody').append(
+                        `<tr>
+                            <td>${value.fecha}</td>
+                            <td>at ${value.hora} hrs</td>
+                            <td><img src="/images/sos.png"></td>
+                        </tr>`             
+                    );
+                });
+            }).fail(function error(response){
+                console.log(response.error)
+            });
     });
 </script>
 @endsection

@@ -17,8 +17,61 @@
     height: 285px;
 }
 .table-incidents {
-    height: 100%;
+    height: 98%;
 }
+.table-incidents img {
+    height: 45px;
+    width: 50px;
+}
+#alarmTable tbody td {
+    font-size: 10pt;
+}
+
+.table-weather span, .table-incidents span {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4%;
+    color: #605e5e;
+}
+
+/*ESTILOS PARA TABLA DE TEMPERATURA Y HUMEDAD*/
 .table-weather {
-    height: 100%;
+    height: 98%;
+}
+.table-container{
+    height: 85%;
+    overflow-y: auto;
+}
+#tempHumTable tbody td {
+    font-size: 10pt;
+}
+#tempHumTable tbody td img {
+    height: 18px;
+    margin-right: 2px;
+}
+.table-container::-webkit-scrollbar {
+    width: 4px;
+    
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+    height: 10px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.table-container::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+/* Cambiamos el fondo cuando esté en active o hover */
+.table-container::-webkit-scrollbar-track:hover,
+.table-container::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
 }

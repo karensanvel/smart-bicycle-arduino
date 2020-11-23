@@ -10,6 +10,11 @@ header {
     overflow: hidden; 
     background-color: #0053BF;
 }
+
+.logo-container img {
+    width: 260px;
+    height: 100%;
+}
 #header{
     text-align: center;
     font-size: 22pt;
@@ -19,46 +24,6 @@ header {
 .profile-info {
     color: #ffffff;
 }
-/* informacion perfil en header */
-/* #logo{
-    display: flex;
-    justify-content: center;align-content: center;align-items: center;
-    width: 100%;
-    height: 150px;
-    background: rgb(20, 188, 230);
-} */
-/* #logo img{
-    width: 150px;
-    height: 150px;
-} */
-/* #user{ 
-    width: 100%;
-    color: #ecf6ec;
-    height: 110px;
-    margin-bottom: 70px; 
-    background: rgb(20, 188, 230);
-} */
-/* #profile_info{
-    width: 100%;
-    height: 150px;
-} */
-/* #profile_info div{
-    height: 19px;
-    width: 100%;
-} */
-/* #user h3, h5{ margin-left: 35px; font-family: sans-serif;}
-#user h5{ color: rgb(255, 255, 255);}
-#user div i{
-    float: left;
-    color: white;
-    margin-left: 5px;
-} */
-/* #user h4{ 
-    text-align: center; 
-    font-family: sans-serif; 
-    font-size: 12pt;
-} */
-
 
 /*N A V B A R*/
 .fa-sort-desc {
