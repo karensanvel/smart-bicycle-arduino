@@ -1,5 +1,23 @@
 <template>
-  <div id="time" style="height: 250px !important;"></div>
+  <!-- <div id="time" style="height: 200px !important;"></div> -->
+  <div style="height: 200px !important;" class="d-flex justify-content-center align-items-center flex-column">
+    <template v-if="lastRoute">
+      <small>
+        Travel time
+      </small>
+      <h3>
+        {{ lastRoute.time }}
+      </h3>
+    </template>
+    <template v-else>
+      <small>
+        Travel time
+      </small>
+      <h3>
+        00:00:00
+      </h3>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -9,121 +27,132 @@ export default {
   name: 'LastRouteTravelTime',
   data() {
     return {
-      gaugeOptions: {
-        chart: {
-          type: 'solidgauge'
-        },
+      // gaugeOptions: {
+      //   chart: {
+      //     type: 'solidgauge'
+      //   },
 
-        title: null,
+      //   title: null,
 
-        pane: {
-          center: ['50%', '85%'],
-          size: '100%',
-          startAngle: -90,
-          endAngle: 90,
-          background: {
-            backgroundColor:
-              Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-          }
-        },
+      //   pane: {
+      //     center: ['50%', '85%'],
+      //     size: '120%',
+      //     startAngle: -90,
+      //     endAngle: 90,
+      //     background: {
+      //       backgroundColor:
+      //         Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+      //       innerRadius: '60%',
+      //       outerRadius: '100%',
+      //       shape: 'arc'
+      //     }
+      //   },
 
-        exporting: {
-          enabled: false
-        },
+      //   exporting: {
+      //     enabled: false
+      //   },
 
-        tooltip: {
-          enabled: false
-        },
+      //   tooltip: {
+      //     enabled: false
+      //   },
 
-        // the value axis
-        yAxis: {
-          stops: [
-            [0.1, '#55BF3B'], // green
-            [0.5, '#DDDF0D'], // yellow
-            [0.9, '#DF5353'] // red
-          ],
-          lineWidth: 0,
-          tickWidth: 0,
-          minorTickInterval: null,
-          tickAmount: 2,
-          title: {
-            y: -70
-          },
-          labels: {
-            y: 16
-          }
-        },
+      //   // the value axis
+      //   yAxis: {
+      //     stops: [
+      //       [0.1, '#55BF3B'], // green
+      //       [0.5, '#DDDF0D'], // yellow
+      //       [0.9, '#DF5353'] // red
+      //     ],
+      //     lineWidth: 0,
+      //     tickWidth: 0,
+      //     minorTickInterval: null,
+      //     tickAmount: 2,
+      //     title: {
+      //       y: -70
+      //     },
+      //     labels: {
+      //       y: 16
+      //     }
+      //   },
 
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
-              borderWidth: 0,
-              useHTML: true
-            }
-          }
-        }
-      },
+      //   plotOptions: {
+      //     solidgauge: {
+      //       dataLabels: {
+      //         y: 5,
+      //         borderWidth: 0,
+      //         useHTML: true
+      //       }
+      //     }
+      //   }
+      // },
+      // chartSpeed: null,
     };
   },
-  components: {
-    components: {},
-  },
   mounted() {
-    var chartSpeed = Highcharts.chart('time', Highcharts.merge(this.gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 200,
-        title: {
-          text: 'Speed'
-        }
-      },
+    // this.chartSpeed = Highcharts.chart('time', Highcharts.merge(this.gaugeOptions, {
+    //   yAxis: {
+    //     min: 0,
+    //     max: 200,
+    //     title: {
+    //       text: 'Travel time'
+    //     }
+    //   },
 
-      credits: {
-        enabled: false
-      },
+    //   credits: {
+    //     enabled: false
+    //   },
 
-      series: [{
-        name: 'Time',
-        data: [800],
-        dataLabels: {
-          format:
-            '<div style="text-align:center">' +
-            '<span style="font-size:25px">{y}</span><br/>' +
-            '<span style="font-size:12px;opacity:0.4">Hrs.</span>' +
-            '</div>'
-        },
-        tooltip: {
-          valueSuffix: ' time'
-        }
-      }]
+    //   series: [{
+    //     name: 'Time',
+    //     data: [80],
+    //     dataLabels: {
+    //       format:
+    //         '<div style="text-align:center">' +
+    //         '<span style="font-size:25px">{y}</span><br/>' +
+    //         '<span style="font-size:12px;opacity:0.4">Hrs.</span>' +
+    //         '</div>'
+    //     },
+    //     tooltip: {
+    //       valueSuffix: ' time'
+    //     }
+    //   }]
 
-    }));
+    // }));
+  },
+  watch: {
+    // lastRoute: function() {
+    //   // Bring life to the dials
+    //   // setInterval(function () {
+    //   // Speed
+    //   var point,
+    //     newVal,
+    //     inc;
 
-    // Bring life to the dials
-    setInterval(function () {
-      // Speed
-      var point,
-        newVal,
-        inc;
+    //   if (this.chartSpeed) {
+    //     point = this.chartSpeed.series[0].points[0];
+    //     // inc = Math.round((Math.random() - 0.5) * 100);
+        
+    //     var hms = this.lastRoute.time;   // your input string
+    //     var a = hms.split(':'); // split it at the colons
 
-      if (chartSpeed) {
-        point = chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
+    //     // minutes are worth 60 seconds. Hours are worth 60 minutes.
+    //     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
 
-        if (newVal < 0 || newVal > 200) {
-          newVal = point.y - inc;
-        }
+    //     console.log('seconds', seconds);
+    //     console.log('minutes', Math.round(seconds / 60));
 
-        point.update(newVal);
-      }
-    }, 2000);
+    //     inc = Math.round(seconds / 60);
 
+    //     newVal = point.y + inc;
 
+    //     if (newVal < 0 || newVal > 200) {
+    //       newVal = point.y - inc;
+    //     }
+
+    //     point.update(newVal);
+    //   }
+    //   // }, 2000);
+    // }
   },
   computed: {
     ...mapGetters({

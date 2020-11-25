@@ -27,7 +27,9 @@
                     <div class="graph-speed">
                         <last-route-travel-time-component></last-route-travel-time-component>
                     </div>
-                    <div class="graph-speed">q</div>
+                    <div class="graph-speed">
+                        <last-route-distance-traveled-component></last-route-distance-traveled-component>
+                    </div>
                     <div class="graph-speed">
                         <last-route-speed-component></last-route-speed-component>
                     </div>

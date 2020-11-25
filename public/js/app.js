@@ -1956,7 +1956,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setInterval(function () {
       // this.activateAlarm();
       _this.fetchLastRoute();
-    }, 10000);
+    }, 2000);
   },
   mounted: function mounted() {
     this.initMap();
@@ -2058,6 +2058,134 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'LastRouteTravelTime',
+  data: function data() {
+    return {
+      gaugeOptions: {
+        chart: {
+          type: 'solidgauge'
+        },
+        title: null,
+        pane: {
+          center: ['50%', '85%'],
+          size: '120%',
+          startAngle: -90,
+          endAngle: 90,
+          background: {
+            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+            innerRadius: '60%',
+            outerRadius: '100%',
+            shape: 'arc'
+          }
+        },
+        exporting: {
+          enabled: false
+        },
+        tooltip: {
+          enabled: false
+        },
+        // the value axis
+        yAxis: {
+          stops: [[0.1, '#55BF3B'], // green
+          [0.5, '#DDDF0D'], // yellow
+          [0.9, '#DF5353'] // red
+          ],
+          lineWidth: 0,
+          tickWidth: 0,
+          minorTickInterval: null,
+          tickAmount: 2,
+          title: {
+            y: -70
+          },
+          labels: {
+            y: 16
+          }
+        },
+        plotOptions: {
+          solidgauge: {
+            dataLabels: {
+              y: 5,
+              borderWidth: 0,
+              useHTML: true
+            }
+          }
+        }
+      }
+    };
+  },
+  components: {
+    components: {}
+  },
+  mounted: function mounted() {
+    var chartSpeed = Highcharts.chart('distanceTraveled', Highcharts.merge(this.gaugeOptions, {
+      yAxis: {
+        min: 0,
+        max: 200,
+        title: {
+          text: 'Distance traveled'
+        }
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        name: 'Time',
+        data: [800],
+        dataLabels: {
+          format: '<div style="text-align:center">' + '<span style="font-size:25px">{y}</span><br/>' + '<span style="font-size:12px;opacity:0.4">Km</span>' + '</div>'
+        },
+        tooltip: {
+          valueSuffix: ' time'
+        }
+      }]
+    })); // Bring life to the dials
+
+    setInterval(function () {
+      // Speed
+      var point, newVal, inc;
+
+      if (chartSpeed) {
+        point = chartSpeed.series[0].points[0];
+        inc = Math.round((Math.random() - 0.5) * 100);
+        newVal = point.y + inc;
+
+        if (newVal < 0 || newVal > 200) {
+          newVal = point.y - inc;
+        }
+
+        point.update(newVal);
+      }
+    }, 2000);
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    lastRoute: 'route/lastRoute'
+  }))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteSpeed.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteSpeed.vue?vue&type=script&lang=js& ***!
@@ -2090,7 +2218,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: null,
         pane: {
           center: ['50%', '85%'],
-          size: '100%',
+          size: '120%',
           startAngle: -90,
           endAngle: 90,
           background: {
@@ -2206,106 +2334,135 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LastRouteTravelTime',
   data: function data() {
-    return {
-      gaugeOptions: {
-        chart: {
-          type: 'solidgauge'
-        },
-        title: null,
-        pane: {
-          center: ['50%', '85%'],
-          size: '100%',
-          startAngle: -90,
-          endAngle: 90,
-          background: {
-            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-          }
-        },
-        exporting: {
-          enabled: false
-        },
-        tooltip: {
-          enabled: false
-        },
-        // the value axis
-        yAxis: {
-          stops: [[0.1, '#55BF3B'], // green
-          [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'] // red
-          ],
-          lineWidth: 0,
-          tickWidth: 0,
-          minorTickInterval: null,
-          tickAmount: 2,
-          title: {
-            y: -70
-          },
-          labels: {
-            y: 16
-          }
-        },
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
-              borderWidth: 0,
-              useHTML: true
-            }
-          }
-        }
-      }
+    return {// gaugeOptions: {
+      //   chart: {
+      //     type: 'solidgauge'
+      //   },
+      //   title: null,
+      //   pane: {
+      //     center: ['50%', '85%'],
+      //     size: '120%',
+      //     startAngle: -90,
+      //     endAngle: 90,
+      //     background: {
+      //       backgroundColor:
+      //         Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+      //       innerRadius: '60%',
+      //       outerRadius: '100%',
+      //       shape: 'arc'
+      //     }
+      //   },
+      //   exporting: {
+      //     enabled: false
+      //   },
+      //   tooltip: {
+      //     enabled: false
+      //   },
+      //   // the value axis
+      //   yAxis: {
+      //     stops: [
+      //       [0.1, '#55BF3B'], // green
+      //       [0.5, '#DDDF0D'], // yellow
+      //       [0.9, '#DF5353'] // red
+      //     ],
+      //     lineWidth: 0,
+      //     tickWidth: 0,
+      //     minorTickInterval: null,
+      //     tickAmount: 2,
+      //     title: {
+      //       y: -70
+      //     },
+      //     labels: {
+      //       y: 16
+      //     }
+      //   },
+      //   plotOptions: {
+      //     solidgauge: {
+      //       dataLabels: {
+      //         y: 5,
+      //         borderWidth: 0,
+      //         useHTML: true
+      //       }
+      //     }
+      //   }
+      // },
+      // chartSpeed: null,
     };
   },
-  components: {
-    components: {}
+  mounted: function mounted() {// this.chartSpeed = Highcharts.chart('time', Highcharts.merge(this.gaugeOptions, {
+    //   yAxis: {
+    //     min: 0,
+    //     max: 200,
+    //     title: {
+    //       text: 'Travel time'
+    //     }
+    //   },
+    //   credits: {
+    //     enabled: false
+    //   },
+    //   series: [{
+    //     name: 'Time',
+    //     data: [80],
+    //     dataLabels: {
+    //       format:
+    //         '<div style="text-align:center">' +
+    //         '<span style="font-size:25px">{y}</span><br/>' +
+    //         '<span style="font-size:12px;opacity:0.4">Hrs.</span>' +
+    //         '</div>'
+    //     },
+    //     tooltip: {
+    //       valueSuffix: ' time'
+    //     }
+    //   }]
+    // }));
   },
-  mounted: function mounted() {
-    var chartSpeed = Highcharts.chart('time', Highcharts.merge(this.gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 200,
-        title: {
-          text: 'Speed'
-        }
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Time',
-        data: [800],
-        dataLabels: {
-          format: '<div style="text-align:center">' + '<span style="font-size:25px">{y}</span><br/>' + '<span style="font-size:12px;opacity:0.4">Hrs.</span>' + '</div>'
-        },
-        tooltip: {
-          valueSuffix: ' time'
-        }
-      }]
-    })); // Bring life to the dials
-
-    setInterval(function () {
-      // Speed
-      var point, newVal, inc;
-
-      if (chartSpeed) {
-        point = chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
-
-        if (newVal < 0 || newVal > 200) {
-          newVal = point.y - inc;
-        }
-
-        point.update(newVal);
-      }
-    }, 2000);
+  watch: {// lastRoute: function() {
+    //   // Bring life to the dials
+    //   // setInterval(function () {
+    //   // Speed
+    //   var point,
+    //     newVal,
+    //     inc;
+    //   if (this.chartSpeed) {
+    //     point = this.chartSpeed.series[0].points[0];
+    //     // inc = Math.round((Math.random() - 0.5) * 100);
+    //     var hms = this.lastRoute.time;   // your input string
+    //     var a = hms.split(':'); // split it at the colons
+    //     // minutes are worth 60 seconds. Hours are worth 60 minutes.
+    //     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
+    //     console.log('seconds', seconds);
+    //     console.log('minutes', Math.round(seconds / 60));
+    //     inc = Math.round(seconds / 60);
+    //     newVal = point.y + inc;
+    //     if (newVal < 0 || newVal > 200) {
+    //       newVal = point.y - inc;
+    //     }
+    //     point.update(newVal);
+    //   }
+    //   // }, 2000);
+    // }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     lastRoute: 'route/lastRoute'
@@ -6933,6 +7090,25 @@ exports.push([module.i, "\n.map {\r\n    height: 450px;\n}\n.leaflet-popup-conte
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteSpeed.vue?vue&type=style&index=0&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteSpeed.vue?vue&type=style&index=0&lang=css& ***!
@@ -6964,7 +7140,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
 
 // exports
 
@@ -52017,6 +52193,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteSpeed.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteSpeed.vue?vue&type=style&index=0&lang=css& ***!
@@ -52692,6 +52898,33 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {
+    staticStyle: { height: "200px !important" },
+    attrs: { id: "distanceTraveled" }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteSpeed.vue?vue&type=template&id=32a60042&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LastRouteSpeed.vue?vue&type=template&id=32a60042& ***!
@@ -52708,7 +52941,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {
-    staticStyle: { height: "250px !important" },
+    staticStyle: { height: "200px !important" },
     attrs: { id: "speed" }
   })
 }
@@ -52734,10 +52967,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {
-    staticStyle: { height: "250px !important" },
-    attrs: { id: "time" }
-  })
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center align-items-center flex-column",
+      staticStyle: { height: "200px !important" }
+    },
+    [
+      _vm.lastRoute
+        ? [
+            _c("small", [_vm._v("\n      Travel time\n    ")]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("\n      " + _vm._s(_vm.lastRoute.time) + "\n    ")
+            ])
+          ]
+        : [
+            _c("small", [_vm._v("\n      Travel time\n    ")]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("\n      00:00:00\n    ")])
+          ]
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -66206,6 +66459,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component("last-route-component", __webpack_require__(/*! ./components/LastRoute.vue */ "./resources/js/components/LastRoute.vue")["default"]);
 Vue.component("last-route-travel-time-component", __webpack_require__(/*! ./components/LastRouteTravelTime.vue */ "./resources/js/components/LastRouteTravelTime.vue")["default"]);
+Vue.component("last-route-distance-traveled-component", __webpack_require__(/*! ./components/LastRouteDistanceTraveled.vue */ "./resources/js/components/LastRouteDistanceTraveled.vue")["default"]);
 Vue.component("last-route-speed-component", __webpack_require__(/*! ./components/LastRouteSpeed.vue */ "./resources/js/components/LastRouteSpeed.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -66334,6 +66588,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRoute_vue_vue_type_template_id_6675b410___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRoute_vue_vue_type_template_id_6675b410___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LastRouteDistanceTraveled.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/LastRouteDistanceTraveled.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66& */ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66&");
+/* harmony import */ var _LastRouteDistanceTraveled_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LastRouteDistanceTraveled.vue?vue&type=script&lang=js& */ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _LastRouteDistanceTraveled_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LastRouteDistanceTraveled.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LastRouteDistanceTraveled.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LastRouteDistanceTraveled.vue?vue&type=template&id=3ce91b66&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LastRouteDistanceTraveled_vue_vue_type_template_id_3ce91b66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -36,7 +36,7 @@ export default {
         setInterval(() => {
             // this.activateAlarm();
             this.fetchLastRoute();
-        }, 10000)
+        }, 2000)
     },
     mounted() {
         this.initMap();

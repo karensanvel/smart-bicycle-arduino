@@ -1,5 +1,5 @@
 <template>
-  <div id="speed" style="height: 200px !important;"></div>
+  <div id="distanceTraveled" style="height: 200px !important;"></div>
 </template>
 
 <script>
@@ -73,12 +73,12 @@ export default {
     components: {},
   },
   mounted() {
-    var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
+    var chartSpeed = Highcharts.chart('distanceTraveled', Highcharts.merge(this.gaugeOptions, {
       yAxis: {
         min: 0,
         max: 200,
         title: {
-          text: 'Speed'
+          text: 'Distance traveled'
         }
       },
 
@@ -87,21 +87,22 @@ export default {
       },
 
       series: [{
-        name: 'Speed',
+        name: 'Time',
         data: [800],
         dataLabels: {
           format:
             '<div style="text-align:center">' +
             '<span style="font-size:25px">{y}</span><br/>' +
-            '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+            '<span style="font-size:12px;opacity:0.4">Km</span>' +
             '</div>'
         },
         tooltip: {
-          valueSuffix: ' km/h'
+          valueSuffix: ' time'
         }
       }]
 
     }));
+
     // Bring life to the dials
     setInterval(function () {
       // Speed
@@ -121,6 +122,8 @@ export default {
         point.update(newVal);
       }
     }, 2000);
+
+
   },
   computed: {
     ...mapGetters({
