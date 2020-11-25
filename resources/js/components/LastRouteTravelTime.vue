@@ -1,6 +1,6 @@
 <template>
   <!-- <div id="time" style="height: 200px !important;"></div> -->
-  <div style="height: 200px !important;" class="d-flex justify-content-center align-items-center flex-column">
+  <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
     <template v-if="lastRoute">
       <small>
         Travel time

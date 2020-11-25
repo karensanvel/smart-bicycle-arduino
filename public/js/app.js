@@ -2078,106 +2078,124 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LastRouteTravelTime',
   data: function data() {
-    return {
-      gaugeOptions: {
-        chart: {
-          type: 'solidgauge'
-        },
-        title: null,
-        pane: {
-          center: ['50%', '85%'],
-          size: '120%',
-          startAngle: -90,
-          endAngle: 90,
-          background: {
-            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-          }
-        },
-        exporting: {
-          enabled: false
-        },
-        tooltip: {
-          enabled: false
-        },
-        // the value axis
-        yAxis: {
-          stops: [[0.1, '#55BF3B'], // green
-          [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'] // red
-          ],
-          lineWidth: 0,
-          tickWidth: 0,
-          minorTickInterval: null,
-          tickAmount: 2,
-          title: {
-            y: -70
-          },
-          labels: {
-            y: 16
-          }
-        },
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
-              borderWidth: 0,
-              useHTML: true
-            }
-          }
-        }
-      }
+    return {// gaugeOptions: {
+      //   chart: {
+      //     type: 'solidgauge'
+      //   },
+      //   title: null,
+      //   pane: {
+      //     center: ['50%', '85%'],
+      //     size: '120%',
+      //     startAngle: -90,
+      //     endAngle: 90,
+      //     background: {
+      //       backgroundColor:
+      //         Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+      //       innerRadius: '60%',
+      //       outerRadius: '100%',
+      //       shape: 'arc'
+      //     }
+      //   },
+      //   exporting: {
+      //     enabled: false
+      //   },
+      //   tooltip: {
+      //     enabled: false
+      //   },
+      //   // the value axis
+      //   yAxis: {
+      //     stops: [
+      //       [0.1, '#55BF3B'], // green
+      //       [0.5, '#DDDF0D'], // yellow
+      //       [0.9, '#DF5353'] // red
+      //     ],
+      //     lineWidth: 0,
+      //     tickWidth: 0,
+      //     minorTickInterval: null,
+      //     tickAmount: 2,
+      //     title: {
+      //       y: -70
+      //     },
+      //     labels: {
+      //       y: 16
+      //     }
+      //   },
+      //   plotOptions: {
+      //     solidgauge: {
+      //       dataLabels: {
+      //         y: 5,
+      //         borderWidth: 0,
+      //         useHTML: true
+      //       }
+      //     }
+      //   }
+      // },
     };
   },
-  components: {
-    components: {}
-  },
-  mounted: function mounted() {
-    var chartSpeed = Highcharts.chart('distanceTraveled', Highcharts.merge(this.gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 200,
-        title: {
-          text: 'Distance traveled'
-        }
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Time',
-        data: [800],
-        dataLabels: {
-          format: '<div style="text-align:center">' + '<span style="font-size:25px">{y}</span><br/>' + '<span style="font-size:12px;opacity:0.4">Km</span>' + '</div>'
-        },
-        tooltip: {
-          valueSuffix: ' time'
-        }
-      }]
-    })); // Bring life to the dials
-
-    setInterval(function () {
-      // Speed
-      var point, newVal, inc;
-
-      if (chartSpeed) {
-        point = chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
-
-        if (newVal < 0 || newVal > 200) {
-          newVal = point.y - inc;
-        }
-
-        point.update(newVal);
-      }
-    }, 2000);
+  mounted: function mounted() {// var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
+    //   yAxis: {
+    //     min: 0,
+    //     max: 200,
+    //     title: {
+    //       text: 'Speed'
+    //     }
+    //   },
+    //   credits: {
+    //     enabled: false
+    //   },
+    //   series: [{
+    //     name: 'Speed',
+    //     data: [800],
+    //     dataLabels: {
+    //       format:
+    //         '<div style="text-align:center">' +
+    //         '<span style="font-size:25px">{y}</span><br/>' +
+    //         '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+    //         '</div>'
+    //     },
+    //     tooltip: {
+    //       valueSuffix: ' km/h'
+    //     }
+    //   }]
+    // }));
+    // // Bring life to the dials
+    // setInterval(function () {
+    //   // Speed
+    //   var point,
+    //     newVal,
+    //     inc;
+    //   if (chartSpeed) {
+    //     point = chartSpeed.series[0].points[0];
+    //     inc = Math.round((Math.random() - 0.5) * 100);
+    //     newVal = point.y + inc;
+    //     if (newVal < 0 || newVal > 200) {
+    //       newVal = point.y - inc;
+    //     }
+    //     point.update(newVal);
+    //   }
+    // }, 2000);
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     lastRoute: 'route/lastRoute'
@@ -2206,108 +2224,135 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'LastRouteTravelTime',
   data: function data() {
-    return {
-      gaugeOptions: {
-        chart: {
-          type: 'solidgauge'
-        },
-        title: null,
-        pane: {
-          center: ['50%', '85%'],
-          size: '120%',
-          startAngle: -90,
-          endAngle: 90,
-          background: {
-            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-          }
-        },
-        exporting: {
-          enabled: false
-        },
-        tooltip: {
-          enabled: false
-        },
-        // the value axis
-        yAxis: {
-          stops: [[0.1, '#55BF3B'], // green
-          [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'] // red
-          ],
-          lineWidth: 0,
-          tickWidth: 0,
-          minorTickInterval: null,
-          tickAmount: 2,
-          title: {
-            y: -70
-          },
-          labels: {
-            y: 16
-          }
-        },
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
-              borderWidth: 0,
-              useHTML: true
-            }
-          }
-        }
-      }
+    return {// gaugeOptions: {
+      //   chart: {
+      //     type: 'solidgauge'
+      //   },
+      //   title: null,
+      //   pane: {
+      //     center: ['50%', '90%'],
+      //     size: '120%',
+      //     startAngle: -90,
+      //     endAngle: 90,
+      //     background: {
+      //       backgroundColor:
+      //         Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+      //       innerRadius: '60%',
+      //       outerRadius: '100%',
+      //       shape: 'arc'
+      //     }
+      //   },
+      //   exporting: {
+      //     enabled: false
+      //   },
+      //   tooltip: {
+      //     enabled: false
+      //   },
+      //   // the value axis
+      //   yAxis: {
+      //     stops: [
+      //       [0.1, '#55BF3B'], // green
+      //       [0.5, '#DDDF0D'], // yellow
+      //       [0.9, '#DF5353'] // red
+      //     ],
+      //     lineWidth: 0,
+      //     tickWidth: 0,
+      //     minorTickInterval: null,
+      //     tickAmount: 2,
+      //     title: {
+      //       y: -70
+      //     },
+      //     labels: {
+      //       y: 16
+      //     }
+      //   },
+      //   plotOptions: {
+      //     solidgauge: {
+      //       dataLabels: {
+      //         y: 5,
+      //         borderWidth: 0,
+      //         useHTML: true
+      //       }
+      //     }
+      //   }
+      // },
     };
   },
-  components: {
-    components: {}
+  mounted: function mounted() {// var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
+    //   yAxis: {
+    //     min: 0,
+    //     max: 200,
+    //     title: {
+    //       text: 'Speed'
+    //     }
+    //   },
+    //   credits: {
+    //     enabled: false
+    //   },
+    //   series: [{
+    //     name: 'Speed',
+    //     data: [800],
+    //     dataLabels: {
+    //       format:
+    //         '<div style="text-align:center">' +
+    //         '<span style="font-size:25px">{y}</span><br/>' +
+    //         '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+    //         '</div>'
+    //     },
+    //     tooltip: {
+    //       valueSuffix: ' km/h'
+    //     }
+    //   }]
+    // }));
+    // // Bring life to the dials
+    // // setInterval(function () {
+    // // Speed
+    // var point,
+    //   newVal,
+    //   inc;
+    // if (chartSpeed) {
+    //   point = chartSpeed.series[0].points[0];
+    //   inc = Math.round((Math.random() - 0.5) * 100);
+    //   newVal = point.y + inc;
+    //   if (newVal < 0 || newVal > 200) {
+    //     newVal = point.y - inc;
+    //   }
+    //   point.update(newVal);
+    // }
+    // // }, 2000);
   },
-  mounted: function mounted() {
-    var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 200,
-        title: {
-          text: 'Speed'
-        }
-      },
-      credits: {
-        enabled: false
-      },
-      series: [{
-        name: 'Speed',
-        data: [800],
-        dataLabels: {
-          format: '<div style="text-align:center">' + '<span style="font-size:25px">{y}</span><br/>' + '<span style="font-size:12px;opacity:0.4">km/h</span>' + '</div>'
-        },
-        tooltip: {
-          valueSuffix: ' km/h'
-        }
-      }]
-    })); // Bring life to the dials
-
-    setInterval(function () {
-      // Speed
-      var point, newVal, inc;
-
-      if (chartSpeed) {
-        point = chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
-
-        if (newVal < 0 || newVal > 200) {
-          newVal = point.y - inc;
-        }
-
-        point.update(newVal);
+  computed: _objectSpread({
+    kilometersPerHour: function kilometersPerHour() {
+      if (this.lastRoute) {
+        var result = parseFloat(this.lastRoute.kilometresTraveled) / parseFloat(this.lastRoute.hours);
+        return result.toFixed(2);
       }
-    }, 2000);
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+
+      return 0;
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     lastRoute: 'route/lastRoute'
   }))
 });
@@ -7102,7 +7147,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
 
 // exports
 
@@ -7121,7 +7166,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* .highcharts-figure .chart-container {\r\n\twidth: 300px;\r\n\theight: 200px;\r\n\tfloat: left;\r\n}\r\n\r\n.highcharts-figure, .highcharts-data-table table {\r\n\twidth: 600px;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.highcharts-data-table table {\r\n  font-family: Verdana, sans-serif;\r\n  border-collapse: collapse;\r\n  border: 1px solid #EBEBEB;\r\n  margin: 10px auto;\r\n  text-align: center;\r\n  width: 100%;\r\n  max-width: 500px;\r\n}\r\n.highcharts-data-table caption {\r\n  padding: 1em 0;\r\n  font-size: 1.2em;\r\n  color: #555;\r\n}\r\n.highcharts-data-table th {\r\n\tfont-weight: 600;\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {\r\n  padding: 0.5em;\r\n}\r\n.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {\r\n  background: #f8f8f8;\r\n}\r\n.highcharts-data-table tr:hover {\r\n  background: #f1f7ff;\r\n}\r\n\r\n@media (max-width: 600px) {\r\n\t.highcharts-figure, .highcharts-data-table table {\r\n\t\twidth: 100%;\r\n\t}\r\n\t.highcharts-figure .chart-container {\r\n\t\twidth: 300px;\r\n\t\tfloat: none;\r\n\t\tmargin: 0 auto;\r\n\t}\r\n\r\n} */\r\n", ""]);
 
 // exports
 
@@ -52913,10 +52958,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {
-    staticStyle: { height: "200px !important" },
-    attrs: { id: "distanceTraveled" }
-  })
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center align-items-center flex-column",
+      staticStyle: { height: "150px !important" }
+    },
+    [
+      _vm.lastRoute
+        ? [
+            _c("small", [_vm._v("\n      Distance traveled\n    ")]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v(
+                "\n      " +
+                  _vm._s(_vm.lastRoute.kilometresTraveled) +
+                  " km\n    "
+              )
+            ])
+          ]
+        : [
+            _c("small", [_vm._v("\n      Distance traveled\n    ")]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("\n      0 km\n    ")])
+          ]
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52940,10 +53009,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {
-    staticStyle: { height: "200px !important" },
-    attrs: { id: "speed" }
-  })
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center align-items-center flex-column",
+      staticStyle: { height: "150px !important" }
+    },
+    [
+      _vm.lastRoute
+        ? [
+            _c("small", [_vm._v("\n      Speed\n    ")]),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v("\n      " + _vm._s(_vm.kilometersPerHour) + " km/h\n    ")
+            ])
+          ]
+        : [
+            _c("small", [_vm._v("\n      Speed\n    ")]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("\n      0 km/h\n    ")])
+          ]
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52972,7 +53061,7 @@ var render = function() {
     {
       staticClass:
         "d-flex justify-content-center align-items-center flex-column",
-      staticStyle: { height: "200px !important" }
+      staticStyle: { height: "150px !important" }
     },
     [
       _vm.lastRoute
@@ -66972,10 +67061,45 @@ __webpack_require__.r(__webpack_exports__);
     // actions
     SET_LAST_ROUTE: function SET_LAST_ROUTE(_ref, route) {
       var commit = _ref.commit;
+      var hms = route.time; // your input string
+
+      var a = hms.split(':'); // split it at the colons
+      // minutes are worth 60 seconds. Hours are worth 60 minutes.
+
+      var seconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
+      route.hours = seconds / 3600;
+      var latlngs = route.coordenadas ? route.coordenadas : [];
+
+      if (latlngs.length > 0) {
+        var lat1 = latlngs[0].latitud;
+        var lon1 = latlngs[0].longitud;
+        var lat2 = latlngs[latlngs.length - 1].latitud;
+        var lon2 = latlngs[latlngs.length - 1].longitud;
+        route.kilometresTraveled = calcCrow(lat1, lon1, lat2, lon2).toFixed(1);
+      }
+
       commit('SET_LAST_ROUTE', route);
     }
   }
-});
+}); //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+
+function calcCrow(lat1, lon1, lat2, lon2) {
+  var R = 6371; // km
+
+  var dLat = toRad(lat2 - lat1);
+  var dLon = toRad(lon2 - lon1);
+  var lat1 = toRad(lat1);
+  var lat2 = toRad(lat2);
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d;
+} // Converts numeric degrees to radians
+
+
+function toRad(Value) {
+  return Value * Math.PI / 180;
+}
 
 /***/ }),
 
