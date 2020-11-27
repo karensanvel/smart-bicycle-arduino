@@ -24,7 +24,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'LastRouteTravelTime',
+  name: 'LastRouteDistanceTraveled',
   data() {
     return {
       // gaugeOptions: {

@@ -46,6 +46,16 @@ Vue.component(
     require("./components/LastRouteSpeed.vue").default
 );
 
+Vue.component(
+    "route-list-component",
+    require("./components/RouteList.vue").default
+);
+
+Vue.component(
+    "current-route-component",
+    require("./components/CurrentRoute.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

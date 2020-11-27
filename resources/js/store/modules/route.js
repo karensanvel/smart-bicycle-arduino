@@ -4,18 +4,25 @@ export default {
   namespaced: true,
   state: {
     // initial state
-    route: null,
+    lastRoute: null,
+    currentRoute: null,
   },
   getters: {
     // getters
     lastRoute: state => {
-      return state.route;
+      return state.lastRoute;
+    },
+    currentRoute: state => {
+      return state.currentRoute;
     },
   },
   mutations: {
     // mutations
     SET_LAST_ROUTE: (state, route) => {
-      state.route= route;
+      state.lastRoute= route;
+    },
+    SET_CURRENT_ROUTE: (state, route) => {
+      state.currentRoute= route;
     },
   },
   actions: {
@@ -37,6 +44,24 @@ export default {
       }
 
       commit('SET_LAST_ROUTE', route);
+    },
+    SET_CURRENT_ROUTE: ({ commit }, route) => {
+      var hms = route.time;   // your input string
+      var a = hms.split(':'); // split it at the colons
+      // minutes are worth 60 seconds. Hours are worth 60 minutes.
+      var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+      route.hours = seconds / 3600;
+
+      let latlngs = route.coordenadas ? route.coordenadas : [];
+      if (latlngs.length > 0) {
+        let lat1 = latlngs[0].latitud;
+        let lon1 = latlngs[0].longitud;
+        let lat2 = latlngs[latlngs.length-1].latitud;
+        let lon2 = latlngs[latlngs.length-1].longitud;
+        route.kilometresTraveled = calcCrow(lat1, lon1, lat2, lon2).toFixed(1);
+      }
+
+      commit('SET_CURRENT_ROUTE', route);
     },
   },
 };

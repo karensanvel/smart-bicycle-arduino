@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="map" id="map"></div>
+        <div class="map" id="currentRoute"></div>
     </div>
 </template>
 <script>
@@ -9,7 +9,7 @@ import axios from 'axios';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-    name: "LastRoute",
+    name: "CurrentRoute",
     data() {
         return {
             map: null,
@@ -19,50 +19,38 @@ export default {
                 beginning: null,
                 end: null,
             },
-            layer: {
-                id: 0,
-                name: "Route traveled",
-                active: false,
-                pointList: []
-            }
+            polyline: null,
         };
     },
     computed: {
-        // ...mapGetters({
-        //     lastRoute: 'route/lastRoute',
-        // }),
+        ...mapGetters({
+            currentRoute: 'route/currentRoute',
+        }),
     },
-    created() {
-        setInterval(() => {
-            // this.activateAlarm();
-            this.fetchLastRoute();
-        }, 2000)
+    watch: {
+        currentRoute: function(newRoute) {
+            this.initLayer(newRoute.coordenadas);
+        }
     },
+    created() {},
     mounted() {
         this.initMap();
     },
     methods: {
-        fetchLastRoute() {
-            axios.get('api/lastRoute/').then(res => {
-                let route = res.data.ruta[0];
-                route.time = res.data.tiempo;
-                this.setLastRoute(route);
-                this.initLayer(route.coordenadas);
-            });
-        },
         initLayer(data) {
             var self = this;
             var latlngs = [];
             this.markers.beginning ? this.map.removeLayer(this.markers.beginning) : null;
             this.markers.end ? this.map.removeLayer(this.markers.end) : null;
+            this.polyline ? this.map.removeLayer(this.polyline) : null;
 
             for (let i = 0; i < data.length; i++) {
                latlngs.push([data[i].latitud, data[i].longitud]);
             }
 
-            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(this.map);
+            this.polyline = L.polyline(latlngs, {color: 'red'}).addTo(this.map);
 
-            this.map.fitBounds(polyline.getBounds());
+            this.map.fitBounds(this.polyline.getBounds());
 
             var markerBeginningIcon = L.icon({
                 iconUrl: "images/cyclist.png",
@@ -93,7 +81,7 @@ export default {
             // }).addTo(this.map);
         },
         initMap() {
-            this.map = L.map("map").setView([32.533, -117.05], 12);
+            this.map = L.map("currentRoute").setView([32.533, -117.05], 12);
             this.tileLayer = L.tileLayer(
                 "https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png",
                 {
@@ -104,40 +92,6 @@ export default {
             );
             this.tileLayer.addTo(this.map);
         },
-        activateAlarm() {
-            axios.get('api/getLastData/').then((res => {
-                var self = this;
-                if (res.data.datos[0].alarm === "1") {
-                    this.map.removeLayer(this.markers.sos);
-        
-                    var markerIcon = L.icon({
-                        iconUrl: "images/sos.png",
-                        iconSize: [60, 60],
-                        className: 'blink'
-                    });
-                    this.markers.sos = L.marker([32.533, -117.05], {
-                        icon: markerIcon
-                    }).on('click', function (e) {
-                        self.map.setView(e.target.getLatLng(), 16)
-                    }).addTo(this.map).bindPopup(
-                        'El usuario ha activado la alarma.'
-                    ).openPopup();
-                } else {
-                    var markerIcon = L.icon({
-                        iconUrl: "images/marker.png",
-                        iconSize: [32, 32]
-                    });
-                    this.markers.sos = L.marker([32.533, -117.05], {
-                        icon: markerIcon
-                    }).on('click', function (e) {
-                        self.map.setView(e.target.getLatLng(), 16)
-                    }).addTo(this.map);
-                }
-            }))
-        },
-        ...mapActions({
-            setLastRoute: 'route/SET_LAST_ROUTE',
-        }),
     },
 };
 </script>
