@@ -138,30 +138,37 @@
         setInterval(() => {
             loadDashboard();
         }, 1000);
-
+        var ocupado = false;
+       
         function loadDashboard (){
             $.get("/api/getLastData/")
             .done(function sucess(response) {
-                // console.log(response);
+                console.log(response);
                 var mts = parseFloat(response.datos[0].proximity_back) / 100;
                 var centimetros = parseInt(response.datos[0].proximity_back);
                 var fecha= response.datos[0].lectura_fecha.split(' ')[0];
                 var hora= response.datos[0].lectura_fecha.split(' ')[1];
                 var alarma = response.datos[0].alarm;
+                
                 if(alarma === '1') {
+                    console.log('LA ALARMA ES ', alarma);
+                    if(ocupado != true) {
+                        sendAlert(alarma);
+                    }
                     $('#panicbutton-legend').html('Alarm activated')
                     $('#panicbutton-legend').css('color', 'red')
-                    $('#circle-in div').fadeIn(500, function () {
+                    $('#circle-in div').fadeIn(300, function () {
                         $('#circle-in div').css('background', 'red');
                         $('#circle-in div span').css('color', 'white');
 
                     });
-                    $('#circle-in div').fadeOut(500, function () {
+                    $('#circle-in div').fadeOut(300, function () {
                         $('#circle-in div').css('background', 'transparent');
                         $('#circle-in div span').css('color', 'red');
                     });
                 }
                 else {
+                    ocupado = false;
                     $('#panicbutton-legend').html('Panic button disabled');
                     $('#panicbutton-legend').css('color', 'white');
                     $('#circle-in div').css('display', 'flex');
@@ -187,6 +194,13 @@
                 $('#meters').html(mts);
                 $('#datetime').html(hora);
             });  
+        }
+        function sendAlert(alarm) {  
+            $.get("/api/sendAlertEmail/" + "{{Auth::user()->username}}")
+            .done(function sucess(response) {
+                console.log('SE HA ENVIADO EL CORREO (SOLO UNA VEZ)');
+            });
+            ocupado = true;
         }
     });
 </script>
