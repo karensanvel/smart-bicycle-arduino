@@ -1,20 +1,20 @@
 <template>
-  <!-- <div id="time" style="height: 200px !important;"></div> -->
+  <!-- <div id="speed" style="height: 200px !important;"></div> -->
   <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
     <template v-if="lastRoute">
       <small>
-        Travel time
+        Distance traveled
       </small>
       <h3>
-        {{ lastRoute.time }}
+        {{ lastRoute.kilometresTraveled }} km
       </h3>
     </template>
     <template v-else>
       <small>
-        Travel time
+        Distance traveled
       </small>
       <h3>
-        00:00:00
+        0 km
       </h3>
     </template>
   </div>
@@ -24,7 +24,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'LastRouteTravelTime',
+  name: 'LastRouteDistanceTraveled',
   data() {
     return {
       // gaugeOptions: {
@@ -85,16 +85,15 @@ export default {
       //     }
       //   }
       // },
-      // chartSpeed: null,
     };
   },
   mounted() {
-    // this.chartSpeed = Highcharts.chart('time', Highcharts.merge(this.gaugeOptions, {
+    // var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
     //   yAxis: {
     //     min: 0,
     //     max: 200,
     //     title: {
-    //       text: 'Travel time'
+    //       text: 'Speed'
     //     }
     //   },
 
@@ -103,46 +102,31 @@ export default {
     //   },
 
     //   series: [{
-    //     name: 'Time',
-    //     data: [80],
+    //     name: 'Speed',
+    //     data: [800],
     //     dataLabels: {
     //       format:
     //         '<div style="text-align:center">' +
     //         '<span style="font-size:25px">{y}</span><br/>' +
-    //         '<span style="font-size:12px;opacity:0.4">Hrs.</span>' +
+    //         '<span style="font-size:12px;opacity:0.4">km/h</span>' +
     //         '</div>'
     //     },
     //     tooltip: {
-    //       valueSuffix: ' time'
+    //       valueSuffix: ' km/h'
     //     }
     //   }]
 
     // }));
-  },
-  watch: {
-    // lastRoute: function() {
-    //   // Bring life to the dials
-    //   // setInterval(function () {
+    // // Bring life to the dials
+    // setInterval(function () {
     //   // Speed
     //   var point,
     //     newVal,
     //     inc;
 
-    //   if (this.chartSpeed) {
-    //     point = this.chartSpeed.series[0].points[0];
-    //     // inc = Math.round((Math.random() - 0.5) * 100);
-        
-    //     var hms = this.lastRoute.time;   // your input string
-    //     var a = hms.split(':'); // split it at the colons
-
-    //     // minutes are worth 60 seconds. Hours are worth 60 minutes.
-    //     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
-
-    //     console.log('seconds', seconds);
-    //     console.log('minutes', Math.round(seconds / 60));
-
-    //     inc = Math.round(seconds / 60);
-
+    //   if (chartSpeed) {
+    //     point = chartSpeed.series[0].points[0];
+    //     inc = Math.round((Math.random() - 0.5) * 100);
     //     newVal = point.y + inc;
 
     //     if (newVal < 0 || newVal > 200) {
@@ -151,8 +135,7 @@ export default {
 
     //     point.update(newVal);
     //   }
-    //   // }, 2000);
-    // }
+    // }, 2000);
   },
   computed: {
     ...mapGetters({

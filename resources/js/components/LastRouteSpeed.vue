@@ -1,128 +1,150 @@
 <template>
-  <div id="speed" style="height: 250px !important;"></div>
+  <!-- <div id="speed" style="height: 150px !important;"></div> -->
+  <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
+    <template v-if="lastRoute">
+      <small>
+        Speed
+      </small>
+      <h3>
+        {{ kilometersPerHour }} km/h
+      </h3>
+    </template>
+    <template v-else>
+      <small>
+        Speed
+      </small>
+      <h3>
+        0 km/h
+      </h3>
+    </template>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'LastRouteTravelTime',
+  name: 'LastRouteSpeed',
   data() {
     return {
-      gaugeOptions: {
-        chart: {
-          type: 'solidgauge'
-        },
+      // gaugeOptions: {
+      //   chart: {
+      //     type: 'solidgauge'
+      //   },
 
-        title: null,
+      //   title: null,
 
-        pane: {
-          center: ['50%', '85%'],
-          size: '100%',
-          startAngle: -90,
-          endAngle: 90,
-          background: {
-            backgroundColor:
-              Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
-            outerRadius: '100%',
-            shape: 'arc'
-          }
-        },
+      //   pane: {
+      //     center: ['50%', '90%'],
+      //     size: '120%',
+      //     startAngle: -90,
+      //     endAngle: 90,
+      //     background: {
+      //       backgroundColor:
+      //         Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+      //       innerRadius: '60%',
+      //       outerRadius: '100%',
+      //       shape: 'arc'
+      //     }
+      //   },
 
-        exporting: {
-          enabled: false
-        },
+      //   exporting: {
+      //     enabled: false
+      //   },
 
-        tooltip: {
-          enabled: false
-        },
+      //   tooltip: {
+      //     enabled: false
+      //   },
 
-        // the value axis
-        yAxis: {
-          stops: [
-            [0.1, '#55BF3B'], // green
-            [0.5, '#DDDF0D'], // yellow
-            [0.9, '#DF5353'] // red
-          ],
-          lineWidth: 0,
-          tickWidth: 0,
-          minorTickInterval: null,
-          tickAmount: 2,
-          title: {
-            y: -70
-          },
-          labels: {
-            y: 16
-          }
-        },
+      //   // the value axis
+      //   yAxis: {
+      //     stops: [
+      //       [0.1, '#55BF3B'], // green
+      //       [0.5, '#DDDF0D'], // yellow
+      //       [0.9, '#DF5353'] // red
+      //     ],
+      //     lineWidth: 0,
+      //     tickWidth: 0,
+      //     minorTickInterval: null,
+      //     tickAmount: 2,
+      //     title: {
+      //       y: -70
+      //     },
+      //     labels: {
+      //       y: 16
+      //     }
+      //   },
 
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
-              borderWidth: 0,
-              useHTML: true
-            }
-          }
-        }
-      },
+      //   plotOptions: {
+      //     solidgauge: {
+      //       dataLabels: {
+      //         y: 5,
+      //         borderWidth: 0,
+      //         useHTML: true
+      //       }
+      //     }
+      //   }
+      // },
     };
   },
-  components: {
-    components: {},
-  },
   mounted() {
-    var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
-      yAxis: {
-        min: 0,
-        max: 200,
-        title: {
-          text: 'Speed'
-        }
-      },
+    // var chartSpeed = Highcharts.chart('speed', Highcharts.merge(this.gaugeOptions, {
+    //   yAxis: {
+    //     min: 0,
+    //     max: 200,
+    //     title: {
+    //       text: 'Speed'
+    //     }
+    //   },
 
-      credits: {
-        enabled: false
-      },
+    //   credits: {
+    //     enabled: false
+    //   },
 
-      series: [{
-        name: 'Speed',
-        data: [800],
-        dataLabels: {
-          format:
-            '<div style="text-align:center">' +
-            '<span style="font-size:25px">{y}</span><br/>' +
-            '<span style="font-size:12px;opacity:0.4">km/h</span>' +
-            '</div>'
-        },
-        tooltip: {
-          valueSuffix: ' km/h'
-        }
-      }]
+    //   series: [{
+    //     name: 'Speed',
+    //     data: [800],
+    //     dataLabels: {
+    //       format:
+    //         '<div style="text-align:center">' +
+    //         '<span style="font-size:25px">{y}</span><br/>' +
+    //         '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+    //         '</div>'
+    //     },
+    //     tooltip: {
+    //       valueSuffix: ' km/h'
+    //     }
+    //   }]
 
-    }));
-    // Bring life to the dials
-    setInterval(function () {
-      // Speed
-      var point,
-        newVal,
-        inc;
+    // }));
+    // // Bring life to the dials
+    // // setInterval(function () {
+    // // Speed
+    // var point,
+    //   newVal,
+    //   inc;
 
-      if (chartSpeed) {
-        point = chartSpeed.series[0].points[0];
-        inc = Math.round((Math.random() - 0.5) * 100);
-        newVal = point.y + inc;
+    // if (chartSpeed) {
+    //   point = chartSpeed.series[0].points[0];
+    //   inc = Math.round((Math.random() - 0.5) * 100);
+    //   newVal = point.y + inc;
 
-        if (newVal < 0 || newVal > 200) {
-          newVal = point.y - inc;
-        }
+    //   if (newVal < 0 || newVal > 200) {
+    //     newVal = point.y - inc;
+    //   }
 
-        point.update(newVal);
-      }
-    }, 2000);
+    //   point.update(newVal);
+    // }
+    // // }, 2000);
   },
   computed: {
+    kilometersPerHour() {
+      if (this.lastRoute) {
+        let result = parseFloat(this.lastRoute.kilometresTraveled) / parseFloat(this.lastRoute.hours);
+        return result.toFixed(2);
+      }
+      return 0;
+    },
     ...mapGetters({
       lastRoute: 'route/lastRoute', 
     }),

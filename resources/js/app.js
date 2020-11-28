@@ -37,8 +37,23 @@ Vue.component(
 );
 
 Vue.component(
+    "last-route-distance-traveled-component",
+    require("./components/LastRouteDistanceTraveled.vue").default
+);
+
+Vue.component(
     "last-route-speed-component",
     require("./components/LastRouteSpeed.vue").default
+);
+
+Vue.component(
+    "route-list-component",
+    require("./components/RouteList.vue").default
+);
+
+Vue.component(
+    "current-route-component",
+    require("./components/CurrentRoute.vue").default
 );
 
 /**

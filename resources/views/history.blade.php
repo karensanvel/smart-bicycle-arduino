@@ -13,11 +13,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     </head>
     <div id="header" class="mb-2 header">History</div>
-    <div class="container-fluid">
+    <div id="app" class="container-fluid">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-5">
-                <div class="table-viajes box-container mb-4">viajes</div>
-                <div class="routes-map box-container">mapa</div>
+                <div class="table-viajes box-container mb-4">
+                    <route-list-component></route-list-component>
+                </div>
+                <div class="routes-map box-container">
+                    <current-route-component></current-route-component>
+                </div>
             </div>                
             <div class="col-12 col-sm-12 col-md-7">
                 <div class="line-graph mb-4 box-container">lines graph</div>
