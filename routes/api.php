@@ -15,5 +15,8 @@ Route::get('getAllCoordenadas/{id}', 'CoordenadaController@getAllCoordenadasPorV
 Route::get('numeroSerial/{number}', 'UserController@getNumber')->name('user.numero.get');//numero serial del logeado (BORRAR Y ADAPTAR)
 Route::get('user/{username}', 'UserController@getUsername')->name('user.username.get'); //informacion del usuario con su numero serial
 Route::get('numeroserial/{id}', 'UserController@getId')->name('user.serialId.get');//informacion del usuario (BORRAR Y ADAPTAR)
+Route::get('cyclist/{id}', 'UserController@getCyclist')->name('user.cyclist.get');//obtener el id del cyclista para el contacto que se registre
 Route::get('sendAlertEmail/{username}', 'MailController@sendEmailAlert')->name('mail.sendAlert.get');//enviar alerta por email cuando la alarma se encienda
 Route::post('create', 'UserController@store')->name('user.datos.store');//crear un usuario 
+Route::post('storeContactCyclist', 'UserController@storeContactForCyclist')->name('user.contact.store');//alamacena contactos del ciclista 
+
