@@ -24,7 +24,7 @@ class LecturaTHController extends Controller
     //Obtener el ultimo dato (para dasshboard en tiempo real)
     public function getLastData(Request $request)
     {
-        $datos = LecturaTemperaturaHumedad::orderBy('lectura_fecha','desc')->limit(1)->get();
+        $datos = LecturaTemperaturaHumedad::orderBy('lectura_fecha','asc')->limit(1)->get();
         return response()->json(['datos'=>$datos]);
     }
 
