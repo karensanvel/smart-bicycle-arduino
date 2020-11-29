@@ -14,10 +14,10 @@
             <tbody>
                 <tr @click="onSetCurrentRoute(route)" v-for="(route, index) in routes" :key="route.id" :class="[{ 'active': currentRoute && currentRoute.id === route.id }, 'pointer']">
                     <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ route.created_at }}</td>
-                    <td>{{ route.created_at }}</td>
-                    <td>{{ route.ended_at }}</td>
-                    <td>{{ getTime(route) }}</td>
+                    <td>{{ getDate(route.created_at) }}</td>
+                    <td>{{ getTime(route.created_at) }}</td>
+                    <td>{{ getTime(route.ended_at) }}</td>
+                    <td>{{ getTotalTime(route) }}</td>
                 </tr>
             </tbody>
         </table>
@@ -46,7 +46,13 @@ export default {
         // }, 2000)
     },
     methods: {
-        getTime(route) {
+        getTime(date) {
+            return moment(date).format('LTS');
+        },
+        getDate(date) {
+            return moment(date).format('L');
+        },
+        getTotalTime(route) {
             let coordinates = route.coordenadas;
             let start, end;
 
@@ -82,7 +88,7 @@ export default {
             });
         },
         onSetCurrentRoute(route) {
-            route.time = this.getTime(route);
+            route.time = this.getTotalTime(route);
 
             this.setCurrentRoute(route);
         },

@@ -1,18 +1,18 @@
 <template>
   <!-- <div id="speed" style="height: 200px !important;"></div> -->
-  <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
+  <div style="height: 150px !important; background-color: #F5A264;" class="d-flex justify-content-center align-items-center flex-column text-white">
+    <span class="material-icons" style=" font-size: 50px;">
+      directions_bike
+    </span>
+    <small>
+      Distance traveled
+    </small>
     <template v-if="lastRoute">
-      <small>
-        Distance traveled
-      </small>
       <h3>
         {{ lastRoute.kilometresTraveled }} km
       </h3>
     </template>
     <template v-else>
-      <small>
-        Distance traveled
-      </small>
       <h3>
         0 km
       </h3>

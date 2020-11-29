@@ -56,6 +56,16 @@ Vue.component(
     require("./components/CurrentRoute.vue").default
 );
 
+Vue.component(
+    "current-route-chart-component",
+    require("./components/CurrentRouteChart/index.vue").default
+);
+
+Vue.component(
+    "current-route-lat-lng-component",
+    require("./components/CurrentRouteLatlng.vue").default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

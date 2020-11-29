@@ -1,18 +1,18 @@
 <template>
   <!-- <div id="time" style="height: 200px !important;"></div> -->
-  <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
+  <div style="height: 150px !important; background-color: #6976FF;" class="d-flex justify-content-center align-items-center flex-column text-white">
+    <span class="material-icons" style=" font-size: 50px;">
+      access_time
+    </span>
+    <small>
+      Travel time
+    </small>
     <template v-if="lastRoute">
-      <small>
-        Travel time
-      </small>
       <h3>
         {{ lastRoute.time }}
       </h3>
     </template>
     <template v-else>
-      <small>
-        Travel time
-      </small>
       <h3>
         00:00:00
       </h3>

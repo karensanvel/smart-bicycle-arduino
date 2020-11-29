@@ -1,18 +1,18 @@
 <template>
   <!-- <div id="speed" style="height: 150px !important;"></div> -->
-  <div style="height: 150px !important;" class="d-flex justify-content-center align-items-center flex-column">
+  <div style="height: 150px !important; background-color: #5EC4D3;" class="d-flex justify-content-center align-items-center flex-column text-white">
+    <span class="material-icons" style=" font-size: 50px;">
+      speed
+    </span>
+    <small>
+      Speed
+    </small>
     <template v-if="lastRoute">
-      <small>
-        Speed
-      </small>
       <h3>
         {{ kilometersPerHour }} km/h
       </h3>
     </template>
     <template v-else>
-      <small>
-        Speed
-      </small>
       <h3>
         0 km/h
       </h3>

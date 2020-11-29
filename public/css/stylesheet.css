@@ -94,6 +94,8 @@ li i{margin-right: 30px;}
     background: white;
     box-shadow: 6px 6px 8px 0px #818181;
     margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
 }
 #divgps{
     /* height: 530px; */

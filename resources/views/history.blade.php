@@ -24,7 +24,9 @@
                 </div>
             </div>                
             <div class="col-12 col-sm-12 col-md-7">
-                <div class="line-graph mb-4 box-container">lines graph</div>
+                <div class="mb-4 box-container">
+                    <current-route-chart-component></current-route-chart-component>
+                </div>
                 <div class="col two-boxes">
                     <div class="col-12 col-sm-12 col-md-6 ml-n3 box-container table-incidents">
                         <span>Incident Log</span>

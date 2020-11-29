@@ -18,6 +18,8 @@
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <div id="header" class="mb-2">Bicycle route information Dashboard</div>
     <div id="app" class="container-fluid">
@@ -97,7 +99,9 @@
                             </div>
                             <div class="item-prox">
                                 <div class="data-label">
-                                    <span id="calle">Lazaro Cardenas 9564</span>
+                                    <span id="calle">
+                                        <current-route-lat-lng-component></current-route-lat-lng-component>
+                                    </span>
                                 </div>
                                 <div class="label">Ubication</div>
                             </div>
