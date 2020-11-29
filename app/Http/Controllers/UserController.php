@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\ContactCyclist;
 use App\NumeroSerie;
 use App\LecturaTemperaturaHumedad;
 
@@ -21,7 +22,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('showRegisterForm','store','getNumber', 'getUsername', 'getId'); 
+        $this->middleware('auth')->except('showRegisterForm','store', 'storeContactForCyclist','getNumber', 'getUsername', 'getId', 'getCyclist'); 
        
     }
     public function index()
@@ -45,10 +46,20 @@ class UserController extends Controller
         $user->idNumero= $request->serialNumber;
         $user->name = $request->name;
         $user->username = $request->username; 
+        $user->user_type = $request->userType;
+        $user->email_contact = $request->emailContact;
+        $user->number_phone = $request->numberPhone;
         $user->password = bcrypt($request->password);
         $user->save();
         return response()->json($user);
         //return redirect()->intended(route('user.index')); back()->withSuccess('User '.$request->username.' has been created successfully');
+    }
+    public function storeContactForCyclist(Request $request) { //malas practicas, no repetir
+        $contactCyc = new ContactCyclist;
+        $contactCyc->id_cyclist= $request->idCyclist;
+        $contactCyc->id_contact = $request->idContact;
+        $contactCyc->save();
+        return response()->json($contactCyc);
     }
     public function getNumber($number)
     {
@@ -65,6 +76,11 @@ class UserController extends Controller
         $user = User::where('username', $username)->with('numero')->get();
         return response()->json($user);
     }
-    
+    public function getCyclist($id)
+    {
+        $user = User::where('user_type', 'cyclist')->where('idNumero', $id)->get();
+        return response()->json($user);
+    }
+   
 }
 

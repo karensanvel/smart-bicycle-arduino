@@ -2,7 +2,18 @@
     font-family: arial;
 }
 body{
-    background: rgb(226, 223, 223);
+    /* background: rgb(226, 223, 223); */
+    background-image: url("../images/modelo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background: radial-gradient(black, transparent); */
+}
+.mask {
+    background: #00000080;
+    position: absolute;
+}
+.someth {
+    background: #00000080;
 }
 header{
     height: 100px;
@@ -17,7 +28,8 @@ header div{
     width: 40%;
     display: flex;
     align-items: center;
-    color: gray;font-size: 18pt;
+    color: white; 
+    font-size: 18pt;
     font-weight: bold;
 }
 #big{
@@ -43,7 +55,7 @@ header div{
     height: 275px;
     display: flex;
     align-items: flex-start;
-    color: rgb(94, 99, 100);
+    color: white; /* rgb(94, 99, 100); */
     font-size: 15pt;
     font-style: italic;
 }
@@ -53,11 +65,13 @@ header div{
     height: 550px;  
     display: flex;
     justify-content: center;align-content: center;align-items: center;
+    position: relative;
+    top: -65px;
 }
 /*STYLE LOGIN USER FORM*/
 #login{
     width: 50%;
-    height: 450px;
+    height: 400px;
     background:white;
     box-shadow: 2px 2px 2px 2px #818181;
    
@@ -65,13 +79,26 @@ header div{
 
 /*STYLE REGISTER USER FORM*/
 #loginRegister{
-    width: 50%;
-    height: 550px;
+    width: 100%;
+    height: auto;
     background:white;
     box-shadow: 2px 2px 2px 2px #818181;
+    display: block;
    
 }
-
+#loginRegister .title {
+    width: 100%;
+}
+.container-inputs {
+    width: 100%;
+    display: flex;
+}
+#loginRegister .inputs {
+    width: 50%;
+}
+#loginRegister .submit-register {
+    width: 100%;
+}
 /* #loginRegister div{
     display: flex;
     align-items: center;
@@ -118,7 +145,7 @@ header div{
 #login input[type="submit"], #loginRegister button[type="submit"]{
     margin:0 auto;
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     display: block;
     border: none;
     outline: none;
@@ -129,16 +156,21 @@ header div{
     border-radius: 20px;
     font-size: 14pt;
 }
-#login a, #loginRegister a{
+.href-log-reg {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.href-log-reg a {
    color: rgb(119, 116, 116);
-   /* margin: 0 auto; */
-   margin-left: 80px;
-   /* margin-top: 20px; */
+   margin-bottom: 20px;
    font-size: 11pt;
    text-decoration: none;
    cursor: pointer;
-   
 }
+
 #login a:hover, #loginRegister a:hover{
     color: blue;
 }
